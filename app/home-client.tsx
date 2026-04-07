@@ -684,8 +684,8 @@ export default function HomeClient() {
                   <a href="https://cal.com" target="_blank" rel="noopener noreferrer" className="btn-primary">
                     Book a Call
                   </a>
-                  <a href="mailto:hello@sugoproduct.co" className="btn-outline-light">
-                    hello@sugoproduct.co
+                  <a href="mailto:marc@sugoproduct.com" className="btn-outline-light">
+                    marc@sugoproduct.com
                   </a>
                 </div>
               </FadeUp>
