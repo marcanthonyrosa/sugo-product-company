@@ -30,6 +30,26 @@
   --transition-slow:   400ms ease;
   --max-width:         1024px;
   --section-pad-y:     96px;
+
+  /* Elevated card surface — sits above the page background */
+  --card-surface:        #ffffff;
+
+  /* Process page — category color tokens */
+  --cat-strategy-border: #AFA9EC;
+  --cat-strategy-bg:     #EEEDFE;
+  --cat-strategy-text:   #3C3489;
+
+  --cat-design-border:   #5DCAA5;
+  --cat-design-bg:       #E1F5EE;
+  --cat-design-text:     #0F6E56;
+
+  --cat-build-border:    #EF9F27;
+  --cat-build-bg:        #FAEEDA;
+  --cat-build-text:      #854F0B;
+
+  --cat-ship-border:     #F0997B;
+  --cat-ship-bg:         #FAECE7;
+  --cat-ship-text:       #993C1D;
 }
 
 /* ── Dark Mode ────────────────────────────────────────────────────────── */
@@ -42,6 +62,25 @@
     --secondary:       #162033;
     --muted:           #4a5e6e;
     --border:          #1e3050;
+
+    --card-surface:        #162033;
+
+    /* Process category colors — dark mode ramps */
+    --cat-strategy-border: #9089D4;
+    --cat-strategy-bg:     #1E1C3A;
+    --cat-strategy-text:   #C4C0F0;
+
+    --cat-design-border:   #3DAD85;
+    --cat-design-bg:       #0E2820;
+    --cat-design-text:     #7DDEC0;
+
+    --cat-build-border:    #C98620;
+    --cat-build-bg:        #2C1F08;
+    --cat-build-text:      #F5B850;
+
+    --cat-ship-border:     #D4795A;
+    --cat-ship-bg:         #281108;
+    --cat-ship-text:       #F4A688;
   }
 }
 
