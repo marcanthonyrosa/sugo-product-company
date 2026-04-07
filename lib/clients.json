@@ -1,0 +1,30 @@
+[
+  {
+    "slug": "acme-2026",
+    "name": "Acme Corp",
+    "engagementType": "Fractional Retainer",
+    "startDate": "2026-03-01",
+    "status": "active",
+    "notes": "Currently in Phase 03. Focus: Q2 roadmap and spec backlog. Next sync scheduled for Wednesday.",
+    "deliverables": [
+      {
+        "title": "Q2 Roadmap",
+        "type": "Roadmap",
+        "date": "2026-04-01",
+        "url": "https://notion.so"
+      },
+      {
+        "title": "Engagement Brief",
+        "type": "Document",
+        "date": "2026-03-15",
+        "url": "https://notion.so"
+      },
+      {
+        "title": "Product Audit — Current State",
+        "type": "Audit",
+        "date": "2026-03-08",
+        "url": "https://notion.so"
+      }
+    ]
+  }
+]
