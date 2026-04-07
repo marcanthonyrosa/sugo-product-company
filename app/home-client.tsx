@@ -587,6 +587,19 @@ export default function HomeClient() {
             ))}
           </div>
 
+          {/* Link to full process page */}
+          <FadeUp delay={0.35}>
+            <div style={{ marginTop: "48px", marginBottom: "56px" }}>
+              <Link
+                href="/how-we-build"
+                className="btn-primary process-link"
+                style={{ fontSize: "15px", padding: "14px 28px", letterSpacing: "0.01em", textTransform: "none" }}
+              >
+                See our full build process →
+              </Link>
+            </div>
+          </FadeUp>
+
           {/* Divider */}
           <div style={{ borderTop: "1px solid var(--border)", marginBottom: "64px" }} />
 
