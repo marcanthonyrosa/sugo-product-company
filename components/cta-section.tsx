@@ -83,7 +83,7 @@ export default function CTASection({
         {showEmail && (
           <div style={{ marginTop: "20px" }}>
             <a
-              href="mailto:marc@sugoproduct.co"
+              href="mailto:marc@sugoproduct.com"
               style={{
                 fontFamily: "var(--font-mono)",
                 fontSize: "12px",
@@ -94,7 +94,7 @@ export default function CTASection({
               onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--color-cream)"; }}
               onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--color-slate)"; }}
             >
-              marc@sugoproduct.co
+              marc@sugoproduct.com
             </a>
           </div>
         )}

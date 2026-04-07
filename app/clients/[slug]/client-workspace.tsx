@@ -229,7 +229,7 @@ export default function ClientWorkspace({ client }: { client: Client }) {
           >
             Questions?{" "}
             <a
-              href="mailto:marc@sugoproduct.co"
+              href="mailto:marc@sugoproduct.com"
               className="contact-link"
               style={{
                 color: "var(--color-sage)",
@@ -237,7 +237,7 @@ export default function ClientWorkspace({ client }: { client: Client }) {
                 transition: "opacity var(--transition)",
               }}
             >
-              marc@sugoproduct.co
+              marc@sugoproduct.com
             </a>
           </span>
         </div>

@@ -130,7 +130,7 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
 
         {status === "error" && (
           <p style={{ fontFamily: "var(--font-mono)", fontSize: "12px", color: "#e74c3c", margin: 0, letterSpacing: "0.05em" }}>
-            Something went wrong. Email marc@sugoproduct.co directly.
+            Something went wrong. Email marc@sugoproduct.com directly.
           </p>
         )}
 
@@ -171,7 +171,7 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
 
         <div>
           <a
-            href="mailto:marc@sugoproduct.co"
+            href="mailto:marc@sugoproduct.com"
             style={{
               fontFamily: "var(--font-mono)",
               fontSize: "12px",
@@ -182,7 +182,7 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
             onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--color-cream)"; }}
             onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--color-slate)"; }}
           >
-            marc@sugoproduct.co
+            marc@sugoproduct.com
           </a>
         </div>
       </div>
