@@ -30,19 +30,7 @@ export default function Reveal({
     }
 
     el.style.opacity = "0";
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          el.style.animation = `fadeUp 400ms ease ${delay}ms forwards`;
-          observer.unobserve(el);
-        }
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
+    el.style.animation = `fadeUp 400ms ease ${delay}ms forwards`;
   }, [delay]);
 
   return (

@@ -6,7 +6,7 @@ interface TomatoLogoProps {
   radius?: number | string;
 }
 
-export default function TomatoLogo({ size = 48, radius = "16%" }: TomatoLogoProps) {
+export default function TomatoLogo({ size = 36, radius = "16%" }: TomatoLogoProps) {
   const r = typeof radius === "number" ? `${radius}px` : radius;
   return (
     <Image

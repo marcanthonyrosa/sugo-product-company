@@ -4,9 +4,7 @@ import Link from "next/link";
 import TomatoLogo from "./tomato-logo";
 
 const NAV_LINKS = [
-  { label: "Services", href: "#services" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Process", href: "/process" },
+  { label: "How We Build", href: "/how-we-build" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -26,7 +24,7 @@ export default function Footer() {
         >
           {/* Left: logo + name */}
           <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            <TomatoLogo size={24} />
+            <TomatoLogo size={18} />
             <span style={{ fontFamily: "var(--font-display)", fontSize: "15px", color: "var(--foreground)" }}>
               Sugo Product Company
             </span>

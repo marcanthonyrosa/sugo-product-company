@@ -1,7 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -24,13 +23,10 @@ function FadeUp({ children, delay = 0, className = "", style = {} }: {
   className?: string;
   style?: React.CSSProperties;
 }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
   return (
     <motion.div
-      ref={ref}
       initial={{ opacity: 0, y: 40 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, ease, delay }}
       className={className}
       style={style}
@@ -188,11 +184,8 @@ function ServiceCard({ icon: Icon, title, description, delay }: {
 
 /* ── Underline headline ─────────────────────────────────────────────────── */
 function UnderlineHeadline() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
   return (
     <h2
-      ref={ref}
       style={{
         fontFamily: "var(--font-display)",
         fontSize: "clamp(28px, 4vw, 44px)",
@@ -207,7 +200,7 @@ function UnderlineHeadline() {
         Product is one of the hardest.
         <motion.span
           initial={{ scaleX: 0 }}
-          animate={inView ? { scaleX: 1 } : {}}
+          animate={{ scaleX: 1 }}
           transition={{ duration: 0.6, ease, delay: 0.3 }}
           style={{
             position: "absolute",
@@ -302,12 +295,12 @@ export default function HomeClient() {
               <Image
                 src="/logo-tomato.png"
                 alt="Sugo Product Company logo"
-                width={112}
-                height={112}
+                width={84}
+                height={84}
                 style={{
-                  width: "clamp(64px, 18vw, 112px)",
+                  width: "clamp(48px, 13.5vw, 84px)",
                   height: "auto",
-                  borderRadius: "12px",
+                  borderRadius: "9px",
                   display: "block",
                 }}
                 priority

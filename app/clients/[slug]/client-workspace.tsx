@@ -25,7 +25,7 @@ export default function ClientWorkspace({ client }: { client: Client }) {
         }}
       >
         <Link href="/" aria-label="Back to Sugo Product Company">
-          <TomatoLogo size={36} />
+          <TomatoLogo size={27} />
         </Link>
         <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
           <span

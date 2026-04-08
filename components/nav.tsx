@@ -5,10 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 const NAV_LINKS = [
-  { label: "Services",     href: "/#services" },
-  { label: "How It Works", href: "/#how-it-works" },
-  { label: "About",        href: "/#about" },
-  { label: "Contact",      href: "/#contact" },
+  { label: "How We Build", href: "/how-we-build" },
 ];
 
 export default function Nav() {
@@ -72,9 +69,9 @@ export default function Nav() {
             <Image
               src="/logo-tomato.png"
               alt="Sugo Product Company logo"
-              width={32}
-              height={32}
-              style={{ borderRadius: "8px", display: "block" }}
+              width={24}
+              height={24}
+              style={{ borderRadius: "6px", display: "block" }}
               priority
             />
             <span
