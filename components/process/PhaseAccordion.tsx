@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { Phase, CATEGORY_VARS } from "@/lib/phases";
 import ToolBadge from "./ToolBadge";
+import { PhaseVisual } from "./PhaseVisual";
 
 interface PhaseAccordionProps {
   phases: Phase[];
@@ -129,11 +130,14 @@ export default function PhaseAccordion({ phases }: PhaseAccordionProps) {
               <div style={{ overflow: "hidden" }}>
                 <div
                   style={{
-                    padding: "0 16px 20px 58px",
+                    display: "flex",
+                    gap: "20px",
+                    padding: "20px 16px 20px 58px",
                     borderTop: "0.5px solid var(--border)",
-                    paddingTop: "20px",
                   }}
                 >
+                  {/* Left: text content */}
+                  <div style={{ flex: 1, minWidth: 0 }}>
                   {/* Full description */}
                   <p
                     style={{
@@ -269,6 +273,25 @@ export default function PhaseAccordion({ phases }: PhaseAccordionProps) {
                       </ul>
                     </div>
                   )}
+                  </div>
+
+                  {/* Right: visual panel */}
+                  <div
+                    className="phase-visual-panel"
+                    style={{
+                      flexShrink: 0,
+                      width: "180px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      background: "var(--muted-bg, rgba(0,0,0,0.03))",
+                      borderRadius: "12px",
+                      border: "0.5px solid var(--border)",
+                      padding: "12px",
+                    }}
+                  >
+                    <PhaseVisual phase={phase.number} />
+                  </div>
                 </div>
               </div>
             </div>
@@ -280,7 +303,9 @@ export default function PhaseAccordion({ phases }: PhaseAccordionProps) {
         .accordion-reading-link:hover { opacity: 0.75; }
 
         @media (max-width: 640px) {
-          /* Reduce left padding on mobile for accordion content */
+          .phase-visual-panel {
+            display: none !important;
+          }
         }
       `}</style>
     </div>

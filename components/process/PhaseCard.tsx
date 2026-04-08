@@ -5,6 +5,7 @@ import { ChevronDown } from "lucide-react";
 import { Phase, CATEGORY_VARS } from "@/lib/phases";
 import ToolBadge from "./ToolBadge";
 import Reveal from "@/components/reveal";
+import { PhaseVisual } from "./PhaseVisual";
 
 interface PhaseCardProps {
   phase: Phase;
@@ -154,9 +155,13 @@ export default function PhaseCard({ phase, delay = 0 }: PhaseCardProps) {
             <div
               style={{
                 borderTop: "0.5px solid var(--border)",
+                display: "flex",
+                gap: "20px",
                 padding: "20px 16px 20px 58px",
               }}
             >
+              {/* Left: text content */}
+              <div style={{ flex: 1, minWidth: 0 }}>
               {/* Full description */}
               <p
                 style={{
@@ -271,6 +276,25 @@ export default function PhaseCard({ phase, delay = 0 }: PhaseCardProps) {
                   </ul>
                 </div>
               )}
+              </div>
+
+              {/* Right: visual panel */}
+              <div
+                className="phase-visual-panel"
+                style={{
+                  flexShrink: 0,
+                  width: "180px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  background: "var(--muted-bg, rgba(0,0,0,0.03))",
+                  borderRadius: "12px",
+                  border: "0.5px solid var(--border)",
+                  padding: "12px",
+                }}
+              >
+                <PhaseVisual phase={phase.number} />
+              </div>
             </div>
           </div>
         </div>
@@ -283,6 +307,9 @@ export default function PhaseCard({ phase, delay = 0 }: PhaseCardProps) {
         @media (max-width: 640px) {
           .phase-card [style*="padding: 20px 16px 20px 58px"] {
             padding-left: 16px !important;
+          }
+          .phase-visual-panel {
+            display: none !important;
           }
         }
       `}</style>
