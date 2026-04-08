@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Reveal from "@/components/reveal";
 import SectionLabel from "@/components/section-label";
 import ProductTableToggle from "@/components/product-table-toggle";
+import BackToTop from "@/components/back-to-top";
 
 export const metadata: Metadata = {
   title: "Product Benefits — TMC × Sugo",
@@ -249,6 +250,17 @@ export default function TmcBenefitsPage() {
         .tmc-deep-dive-toggle[open] .tmc-chevron { transform: rotate(180deg); }
         .tmc-deep-dive-toggle .tmc-chevron {
           transition: transform 160ms ease;
+        }
+        .tmc-deep-dive-content {
+          display: grid;
+          grid-template-rows: 0fr;
+          transition: grid-template-rows 200ms ease;
+        }
+        .tmc-deep-dive-toggle[open] .tmc-deep-dive-content {
+          grid-template-rows: 1fr;
+        }
+        .tmc-deep-dive-inner {
+          overflow: hidden;
         }
       `}</style>
 
@@ -560,7 +572,9 @@ export default function TmcBenefitsPage() {
                     </div>
                   </summary>
 
-                  <div style={{ padding: "0 20px 14px", borderTop: "0.5px solid var(--border)" }}>
+                  <div className="tmc-deep-dive-content">
+                    <div className="tmc-deep-dive-inner">
+                    <div style={{ padding: "0 20px 14px", borderTop: "0.5px solid var(--border)", marginLeft: "32px" }}>
                     {product.benefits.map((benefit, j) => (
                       <div
                         key={benefit.title}
@@ -639,11 +653,15 @@ export default function TmcBenefitsPage() {
                       </div>
                     ))}
                   </div>
+                    </div>
+                  </div>
                 </details>
               </Reveal>
             ))}
         </div>
       </section>
+
+      <BackToTop />
     </>
   );
 }
