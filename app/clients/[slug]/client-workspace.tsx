@@ -11,7 +11,7 @@ export default function ClientWorkspace({ client }: { client: Client }) {
   });
 
   return (
-    <div style={{ minHeight: "100vh", background: "var(--color-white)" }}>
+    <div style={{ minHeight: "100vh", background: "var(--background)" }}>
       {/* ── Top bar ────────────────────────────────────────────────────── */}
       <div
         style={{
@@ -57,7 +57,7 @@ export default function ClientWorkspace({ client }: { client: Client }) {
         {/* Header card */}
         <div
           style={{
-            background: "var(--color-cream)",
+            background: "var(--secondary)",
             borderTop: "3px solid var(--color-sage)",
             borderRadius: "0 0 var(--radius) var(--radius)",
             padding: "32px 36px",
@@ -69,7 +69,7 @@ export default function ClientWorkspace({ client }: { client: Client }) {
               fontFamily: "var(--font-display)",
               fontSize: "32px",
               fontWeight: "normal",
-              color: "var(--color-navy)",
+              color: "var(--foreground)",
               margin: "0 0 12px",
             }}
           >
@@ -148,7 +148,7 @@ export default function ClientWorkspace({ client }: { client: Client }) {
                 }}
                 className="deliverable-data-row"
               >
-                <span style={{ fontFamily: "var(--font-display)", fontSize: "16px", color: "var(--color-navy)" }}>
+                <span style={{ fontFamily: "var(--font-display)", fontSize: "16px", color: "var(--foreground)" }}>
                   {d.title}
                 </span>
                 <span style={{ fontFamily: "var(--font-mono)", fontSize: "12px", color: "var(--color-slate)", letterSpacing: "0.05em" }}>
@@ -196,7 +196,7 @@ export default function ClientWorkspace({ client }: { client: Client }) {
             <div style={{ width: "40px", height: "1px", background: "var(--color-sage)", marginBottom: "24px" }} />
             <div
               style={{
-                background: "rgba(245,239,214,0.35)",
+                background: "var(--overlay-section)",
                 border: "1px solid rgba(74,124,89,0.2)",
                 borderRadius: "var(--radius)",
                 padding: "24px 28px",
@@ -206,7 +206,7 @@ export default function ClientWorkspace({ client }: { client: Client }) {
                 style={{
                   fontFamily: "var(--font-display)",
                   fontSize: "17px",
-                  color: "var(--color-navy)",
+                  color: "var(--foreground)",
                   margin: 0,
                   lineHeight: 1.75,
                 }}
@@ -245,7 +245,7 @@ export default function ClientWorkspace({ client }: { client: Client }) {
 
       <style>{`
         .deliverable-data-row { transition: background var(--transition); }
-        .deliverable-data-row:hover { background: rgba(245,239,214,0.4); }
+        .deliverable-data-row:hover { background: var(--overlay-section); }
         .deliverable-link:hover { opacity: 0.7; }
         .contact-link:hover { opacity: 0.7; }
 

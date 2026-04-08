@@ -34,6 +34,24 @@
   /* Elevated card surface — sits above the page background */
   --card-surface:        #ffffff;
 
+  /* Adaptive surface tokens (light defaults) */
+  --nav-bg:              rgba(250, 250, 247, 0.96);
+  --nav-border:          rgba(143, 163, 177, 0.2);
+  --nav-shadow:          rgba(143, 163, 177, 0.08);
+  --hamburger-bg:        rgba(255, 255, 255, 0.60);
+  --hamburger-border:    rgba(143, 163, 177, 0.3);
+  --link-muted:          #4a5568;
+  --mobile-panel-bg:     rgba(255, 255, 255, 0.95);
+  --mobile-link-border:  rgba(143, 163, 177, 0.15);
+  --overlay-section:     rgba(245, 239, 214, 0.3);
+  --glow-green:          rgba(74, 124, 89, 0.12);
+  --glow-green-soft:     rgba(74, 124, 89, 0.04);
+  --glow-navy:           rgba(17, 34, 64, 0.08);
+  --glow-navy-soft:      rgba(17, 34, 64, 0.04);
+  --float-green:         rgba(74, 124, 89, 0.32);
+  --float-navy:          rgba(17, 34, 64, 0.40);
+  --grid-line:           rgba(17, 34, 64, 0.03);
+
   /* Process page — category color tokens */
   --cat-strategy-border: #AFA9EC;
   --cat-strategy-bg:     #EEEDFE;
@@ -60,10 +78,30 @@
     --primary:         #F5EFD6;
     --primary-fg:      #112240;
     --secondary:       #162033;
-    --muted:           #4a5e6e;
-    --border:          #1e3050;
+    --accent:          #5FAF78;
+    --accent-fg:       #0d1a2d;
+    --border:          #1e3a5c;
+    --muted:           #6B8A9E;
 
     --card-surface:        #162033;
+
+    /* Adaptive surface tokens (dark overrides) */
+    --nav-bg:              rgba(13, 26, 45, 0.92);
+    --nav-border:          rgba(30, 58, 92, 0.5);
+    --nav-shadow:          rgba(0, 0, 0, 0.2);
+    --hamburger-bg:        rgba(22, 32, 51, 0.60);
+    --hamburger-border:    rgba(30, 58, 92, 0.5);
+    --link-muted:          #8FA3B1;
+    --mobile-panel-bg:     rgba(13, 26, 45, 0.95);
+    --mobile-link-border:  rgba(30, 58, 92, 0.3);
+    --overlay-section:     rgba(22, 32, 51, 0.4);
+    --glow-green:          rgba(95, 175, 120, 0.10);
+    --glow-green-soft:     rgba(95, 175, 120, 0.05);
+    --glow-navy:           rgba(200, 210, 230, 0.06);
+    --glow-navy-soft:      rgba(200, 210, 230, 0.04);
+    --float-green:         rgba(95, 175, 120, 0.25);
+    --float-navy:          rgba(200, 210, 230, 0.15);
+    --grid-line:           rgba(200, 210, 230, 0.04);
 
     /* Process category colors — dark mode ramps */
     --cat-strategy-border: #9089D4;
@@ -171,8 +209,8 @@ body {
 /* ── Grid overlay (hero) ───────────────────────────────────────────────── */
 .grid-overlay {
   background-image:
-    linear-gradient(rgba(17, 34, 64, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(17, 34, 64, 0.03) 1px, transparent 1px);
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
   background-size: 60px 60px;
   pointer-events: none;
 }
@@ -205,7 +243,7 @@ body {
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: #4a5568;
+  color: var(--link-muted);
   text-decoration: none;
   transition: color 200ms ease;
 }
@@ -405,7 +443,7 @@ body {
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: var(--color-navy);
+  color: var(--foreground);
   text-decoration: none;
   transition: transform 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
 }

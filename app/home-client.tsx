@@ -251,7 +251,7 @@ export default function HomeClient() {
           style={{
             position: "absolute",
             inset: 0,
-            backgroundImage: "radial-gradient(ellipse at top left,rgba(74,124,89,.12),transparent 50%),radial-gradient(ellipse at 85% 20%,rgba(17,34,64,.08),transparent 55%)",
+            backgroundImage: "radial-gradient(ellipse at top left,var(--glow-green),transparent 50%),radial-gradient(ellipse at 85% 20%,var(--glow-navy),transparent 55%)",
           }}
         />
 
@@ -266,7 +266,7 @@ export default function HomeClient() {
             width: "96px",
             height: "96px",
             borderRadius: "50%",
-            background: "rgba(74,124,89,0.32)",
+            background: "var(--float-green)",
             filter: "blur(64px)",
           }}
         />
@@ -280,7 +280,7 @@ export default function HomeClient() {
             width: "80px",
             height: "80px",
             borderRadius: "50%",
-            background: "rgba(17,34,64,0.40)",
+            background: "var(--float-navy)",
             filter: "blur(64px)",
           }}
         />
@@ -332,7 +332,7 @@ export default function HomeClient() {
                 fontWeight: "normal",
                 lineHeight: 0.98,
                 letterSpacing: "-0.06em",
-                color: "var(--color-navy)",
+                color: "var(--foreground)",
                 marginTop: "24px",
                 marginBottom: 0,
               } as React.CSSProperties}
@@ -394,11 +394,11 @@ export default function HomeClient() {
         }}
       >
         {/* Cream-ish background */}
-        <div style={{ position: "absolute", inset: 0, background: "rgba(245,239,214,0.3)", pointerEvents: "none" }} />
+        <div style={{ position: "absolute", inset: 0, background: "var(--overlay-section)", pointerEvents: "none" }} />
 
         {/* Radial glows */}
-        <div aria-hidden="true" style={{ position: "absolute", top: "10%", left: "5%", width: "400px", height: "300px", borderRadius: "50%", background: "rgba(74,124,89,0.04)", filter: "blur(60px)", pointerEvents: "none" }} />
-        <div aria-hidden="true" style={{ position: "absolute", bottom: "10%", right: "5%", width: "350px", height: "250px", borderRadius: "50%", background: "rgba(17,34,64,0.04)", filter: "blur(60px)", pointerEvents: "none" }} />
+        <div aria-hidden="true" style={{ position: "absolute", top: "10%", left: "5%", width: "400px", height: "300px", borderRadius: "50%", background: "var(--glow-green-soft)", filter: "blur(60px)", pointerEvents: "none" }} />
+        <div aria-hidden="true" style={{ position: "absolute", bottom: "10%", right: "5%", width: "350px", height: "250px", borderRadius: "50%", background: "var(--glow-navy-soft)", filter: "blur(60px)", pointerEvents: "none" }} />
 
         <div style={{ maxWidth: "var(--max-width)", margin: "0 auto", position: "relative" }}>
           <FadeUp>
@@ -534,7 +534,7 @@ export default function HomeClient() {
         style={{ padding: "var(--section-pad-y) 24px", position: "relative", overflow: "hidden" }}
       >
         {/* Background */}
-        <div style={{ position: "absolute", inset: 0, background: "rgba(245,239,214,0.3)", pointerEvents: "none" }} />
+        <div style={{ position: "absolute", inset: 0, background: "var(--overlay-section)", pointerEvents: "none" }} />
 
         {/* Decorative corner lines */}
         <div aria-hidden="true" style={{ position: "absolute", top: 40, left: 40, width: 48, height: 48, borderTop: "2px solid var(--accent)", borderLeft: "2px solid var(--accent)", opacity: 0.3 }} />
@@ -639,7 +639,7 @@ export default function HomeClient() {
         id="contact"
         style={{
           padding: "var(--section-pad-y) 24px",
-          color: "var(--primary-fg)",
+          color: "var(--color-cream)",
           position: "relative",
           overflow: "hidden",
           backgroundImage: "url('/contact-bg.png')",
@@ -652,8 +652,8 @@ export default function HomeClient() {
         <div aria-hidden="true" style={{ position: "absolute", inset: 0, background: "rgba(10, 20, 40, 0.18)", pointerEvents: "none" }} />
 
         {/* Subtle green glow */}
-        <div aria-hidden="true" style={{ position: "absolute", top: "10%", left: "-5%", width: "300px", height: "300px", borderRadius: "50%", background: "rgba(74,124,89,0.12)", filter: "blur(80px)", pointerEvents: "none" }} />
-        <div aria-hidden="true" style={{ position: "absolute", bottom: "10%", right: "-5%", width: "240px", height: "240px", borderRadius: "50%", background: "rgba(74,124,89,0.08)", filter: "blur(80px)", pointerEvents: "none" }} />
+        <div aria-hidden="true" style={{ position: "absolute", top: "10%", left: "-5%", width: "300px", height: "300px", borderRadius: "50%", background: "var(--glow-green)", filter: "blur(80px)", pointerEvents: "none" }} />
+        <div aria-hidden="true" style={{ position: "absolute", bottom: "10%", right: "-5%", width: "240px", height: "240px", borderRadius: "50%", background: "var(--glow-green-soft)", filter: "blur(80px)", pointerEvents: "none" }} />
 
         <div className="section-shell" style={{ position: "relative", zIndex: 1 }}>
           <div className="contact-panel">
@@ -666,7 +666,7 @@ export default function HomeClient() {
                   fontFamily: "var(--font-display)",
                   fontSize: "clamp(32px, 5vw, 52px)",
                   fontWeight: "normal",
-                  color: "var(--primary-fg)",
+                  color: "var(--color-cream)",
                   margin: "0 0 20px",
                   lineHeight: 1.15,
                   letterSpacing: "-0.02em",

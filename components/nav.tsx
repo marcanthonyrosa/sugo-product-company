@@ -39,12 +39,12 @@ export default function Nav() {
           inset: "0 0 auto 0",
           zIndex: 50,
           borderBottom: scrolled
-            ? "1px solid rgba(143, 163, 177, 0.2)"
+            ? "1px solid var(--nav-border)"
             : "1px solid transparent",
-          background: "rgba(250, 250, 247, 0.96)",
+          background: "var(--nav-bg)",
           backdropFilter: "blur(8px)",
           WebkitBackdropFilter: "blur(8px)",
-          boxShadow: scrolled ? "0 1px 3px rgba(143,163,177,0.08)" : "none",
+          boxShadow: scrolled ? "0 1px 3px var(--nav-shadow)" : "none",
           transition: "border-color 300ms ease, box-shadow 300ms ease",
         }}
       >
@@ -83,7 +83,7 @@ export default function Nav() {
                 fontSize: "22px",
                 fontWeight: "normal",
                 letterSpacing: "-0.03em",
-                color: "var(--color-navy)",
+                color: "var(--foreground)",
                 lineHeight: 1,
               }}
             >
@@ -117,8 +117,8 @@ export default function Nav() {
               width: "48px",
               height: "48px",
               borderRadius: "var(--radius-md)",
-              border: "1px solid rgba(143, 163, 177, 0.3)",
-              background: "rgba(255, 255, 255, 0.60)",
+              border: "1px solid var(--hamburger-border)",
+              background: "var(--hamburger-bg)",
               cursor: "pointer",
             }}
           >
@@ -127,21 +127,21 @@ export default function Nav() {
               <span style={{
                 position: "absolute", left: 0, top: 0,
                 width: "20px", height: "1px",
-                background: "var(--color-navy)",
+                background: "var(--foreground)",
                 transition: "transform 200ms ease",
                 transform: menuOpen ? "translateY(8px) rotate(45deg)" : "none",
               }} />
               <span style={{
                 position: "absolute", left: 0, top: "8px",
                 width: "20px", height: "1px",
-                background: "var(--color-navy)",
+                background: "var(--foreground)",
                 transition: "opacity 200ms ease",
                 opacity: menuOpen ? 0 : 1,
               }} />
               <span style={{
                 position: "absolute", left: 0, top: "16px",
                 width: "20px", height: "1px",
-                background: "var(--color-navy)",
+                background: "var(--foreground)",
                 transition: "transform 200ms ease",
                 transform: menuOpen ? "translateY(-8px) rotate(-45deg)" : "none",
               }} />
@@ -161,12 +161,12 @@ export default function Nav() {
           position: "fixed",
           inset: "80px 0 auto 0",
           zIndex: 40,
-          borderBottom: "1px solid rgba(143, 163, 177, 0.2)",
-          background: "rgba(255, 255, 255, 0.95)",
+          borderBottom: "1px solid var(--nav-border)",
+          background: "var(--mobile-panel-bg)",
           backdropFilter: "blur(12px)",
           WebkitBackdropFilter: "blur(12px)",
           padding: "0 24px",
-          boxShadow: "0 10px 15px -3px rgba(143,163,177,0.1)",
+          boxShadow: "0 10px 15px -3px var(--nav-shadow)",
           transition: "opacity 300ms ease, transform 300ms ease, visibility 300ms ease",
           opacity:    menuOpen ? 1 : 0,
           transform:  menuOpen ? "translateY(0)" : "translateY(-16px)",
@@ -186,14 +186,14 @@ export default function Nav() {
                 fontSize: "12px",
                 letterSpacing: "0.2em",
                 textTransform: "uppercase",
-                color: "#4a5568",
+                color: "var(--link-muted)",
                 textDecoration: "none",
                 padding: "14px 0",
-                borderBottom: "1px solid rgba(143, 163, 177, 0.15)",
+                borderBottom: "1px solid var(--mobile-link-border)",
                 transition: "color 200ms ease",
               }}
               onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--foreground)"; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "#4a5568"; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--link-muted)"; }}
             >
               {link.label}
             </Link>
