@@ -42,8 +42,8 @@ export default function Hero() {
               fontStyle: "italic",
             }}
           >
-            A repeatable, AI-native process for taking ideas from concept to
-            shipped product — fast.
+            A clear, step-by-step process for turning your idea into a real
+            product — faster than you thought possible.
           </p>
         </Reveal>
         <Reveal delay={200}>
@@ -58,9 +58,10 @@ export default function Hero() {
               maxWidth: "600px",
             }}
           >
-            Every Sugo engagement follows a structured 8-phase lifecycle,
-            informed by best practices from the leading product thinkers in the
-            industry, and executed with modern AI tools at every step.
+            Every project we take on follows 8 clear steps — from
+            understanding the problem to launching something real. We use AI
+            to handle the heavy lifting so we can focus on the decisions that
+            matter.
           </p>
         </Reveal>
       </div>
