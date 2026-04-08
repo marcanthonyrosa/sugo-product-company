@@ -27,7 +27,7 @@ export default function HowWeBuildPage() {
           background: "var(--background)",
         }}
       >
-        <div style={{ maxWidth: "var(--max-width)", margin: "0 auto" }}>
+        <div style={{ maxWidth: "800px", margin: "0 auto" }}>
           <Reveal delay={0}>
             <SectionLabel label="THE PROCESS" />
           </Reveal>

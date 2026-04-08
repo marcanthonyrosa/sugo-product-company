@@ -3,7 +3,7 @@ import Reveal from "@/components/reveal";
 export default function Philosophy() {
   return (
     <section style={{ padding: "var(--section-pad-y) 24px", background: "var(--background)" }}>
-      <div style={{ maxWidth: "var(--max-width)", margin: "0 auto" }}>
+      <div style={{ maxWidth: "800px", margin: "0 auto" }}>
         <Reveal delay={0}>
           <div
             style={{
@@ -24,7 +24,7 @@ export default function Philosophy() {
                 lineHeight: 1.4,
               }}
             >
-              We treat AI as the team, not the tool.
+              We use AI to do the work, not just give advice.
             </p>
             <p
               style={{
@@ -35,7 +35,7 @@ export default function Philosophy() {
                 lineHeight: 1.7,
               }}
             >
-              Claude and its ecosystem handle the execution. We handle the judgment.
+              AI handles the time-consuming parts — writing, coding, researching. We handle the thinking and decision-making.
             </p>
             <p
               style={{
@@ -46,9 +46,8 @@ export default function Philosophy() {
                 lineHeight: 1.7,
               }}
             >
-              Every phase has a primary AI tool, a best practice, and a clear outcome. Nothing is ad hoc.
-              Our process is grounded in the frameworks published by Lenny&apos;s Newsletter — the gold standard
-              for modern product practice.
+              Every step has a purpose, a method, and a clear deliverable. Nothing is made up as we go.
+              Our process is based on proven approaches used by the best product teams in the world.
             </p>
             <p
               style={{
@@ -59,7 +58,7 @@ export default function Philosophy() {
                 lineHeight: 1.6,
               }}
             >
-              Most product consultants advise. We build.
+              Most consultants give you a slide deck. We give you a working product.
             </p>
           </div>
         </Reveal>
