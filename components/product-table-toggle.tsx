@@ -9,6 +9,7 @@ type Confidence = "High" | "Medium" | "Low";
 
 interface Product {
   id: string;
+  slug: string;
   name: string;
   description: string;
   team: Team;
@@ -26,6 +27,7 @@ interface Product {
 const initialProducts: Product[] = [
   {
     id: "01",
+    slug: "portfolio-intelligence-platform",
     name: "Portfolio intelligence",
     description:
       "AI-powered surveillance across 500+ portfolio companies, surfacing funding, hiring, and milestone signals to prioritize follow-on conversations and introductions.",
@@ -41,6 +43,7 @@ const initialProducts: Product[] = [
   },
   {
     id: "02",
+    slug: "social-media-marketing-automation",
     name: "Social media & marketing",
     description:
       "Transforms TMC's travel, conferences, and portfolio milestones into a consistently active social presence with automated scheduling and digital board feeds.",
@@ -56,6 +59,7 @@ const initialProducts: Product[] = [
   },
   {
     id: "03",
+    slug: "strategic-business-intelligence",
     name: "Strategic business intelligence",
     description:
       "Continuous venture partner surveillance, pre-travel briefings, VC identification before conferences, and structured diligence on incoming company decks.",
@@ -71,6 +75,7 @@ const initialProducts: Product[] = [
   },
   {
     id: "04",
+    slug: "program-operations-diligence-automation",
     name: "Program ops & diligence",
     description:
       "Automates contracting, CRM, scheduling, and reporting across 6–9 month accelerator programs, plus competitive landscape research and technology transfer monitoring.",
@@ -86,6 +91,7 @@ const initialProducts: Product[] = [
   },
   {
     id: "05",
+    slug: "eir-talent-pipeline",
     name: "EIR talent pipeline",
     description:
       "AI agent that continuously identifies seasoned med-device and therapeutics executives for TMC's EIR program and Venture Studio model at T Labs.",
@@ -101,6 +107,7 @@ const initialProducts: Product[] = [
   },
   {
     id: "06",
+    slug: "philanthropic-investment-intelligence",
     name: "Philanthropic intelligence",
     description:
       "Tracks Houston's philanthropic community, surfacing giving cycles and positioning TMC for Program Related Investments with foundations like Brown and Kinder.",
@@ -370,7 +377,29 @@ export default function ProductTableToggle() {
                     color: "var(--foreground)",
                   }}
                 >
-                  {row.name}
+                  <a
+                    href={`#project-${row.slug}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document.querySelectorAll<HTMLDetailsElement>(".tmc-deep-dive-toggle").forEach((el) => {
+                        el.open = false;
+                      });
+                      const target = document.getElementById(`project-${row.slug}`);
+                      if (target instanceof HTMLDetailsElement) {
+                        target.open = true;
+                      }
+                      target?.scrollIntoView({ behavior: "smooth", block: "center" });
+                    }}
+                    style={{
+                      color: "inherit",
+                      textDecoration: "none",
+                      borderBottom: "1px dashed var(--border)",
+                      paddingBottom: "1px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {row.name}
+                  </a>
                 </td>
 
                 {mode === "overview" ? (
