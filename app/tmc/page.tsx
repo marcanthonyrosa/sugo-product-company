@@ -55,6 +55,7 @@ interface Product {
   slug: string;
   name: string;
   tag: string;
+  accentColor: BenefitColor;
   benefits: Benefit[];
 }
 
@@ -64,6 +65,7 @@ const products: Product[] = [
     slug: "portfolio-intelligence-platform",
     name: "Portfolio intelligence platform",
     tag: "Tom Luby · Innovation + Venture Fund",
+    accentColor: "teal",
     benefits: [
       {
         color: "teal",
@@ -87,6 +89,7 @@ const products: Product[] = [
     slug: "social-media-marketing-automation",
     name: "Social media & marketing automation",
     tag: "Bill McKeon · Communications + Talent + Brand",
+    accentColor: "purple",
     benefits: [
       {
         color: "purple",
@@ -119,6 +122,7 @@ const products: Product[] = [
     slug: "strategic-business-intelligence",
     name: "Strategic business intelligence",
     tag: "Bill McKeon · Fund + Business Development",
+    accentColor: "amber",
     benefits: [
       {
         color: "amber",
@@ -144,6 +148,7 @@ const products: Product[] = [
     slug: "program-operations-diligence-automation",
     name: "Program operations & diligence automation",
     tag: "Tom Luby · Accelerator + Program teams",
+    accentColor: "teal",
     benefits: [
       {
         color: "teal",
@@ -168,6 +173,7 @@ const products: Product[] = [
     slug: "eir-talent-pipeline",
     name: "EIR talent pipeline",
     tag: "Tom Luby · Venture Studio + T Labs",
+    accentColor: "purple",
     benefits: [
       {
         color: "purple",
@@ -186,6 +192,7 @@ const products: Product[] = [
     slug: "philanthropic-investment-intelligence",
     name: "Philanthropic investment intelligence",
     tag: "Bill McKeon · Foundation + Development",
+    accentColor: "amber",
     benefits: [
       {
         color: "amber",
@@ -208,6 +215,12 @@ const dotColors: Record<BenefitColor, { bg: string; dot: string }> = {
   teal:   { bg: "var(--cat-design-bg)",   dot: "var(--cat-design-text)" },
   purple: { bg: "var(--cat-strategy-bg)", dot: "var(--cat-strategy-text)" },
   amber:  { bg: "var(--cat-build-bg)",    dot: "var(--cat-build-text)" },
+};
+
+const accentBorders: Record<BenefitColor, string> = {
+  teal:   "var(--cat-design-border)",
+  purple: "var(--cat-strategy-border)",
+  amber:  "var(--cat-build-border)",
 };
 
 const pillStyles: Record<string, { background: string; color: string }> = {
@@ -360,26 +373,114 @@ export default function TmcBenefitsPage() {
             </Reveal>
           </div>
 
-          <div
-            id="project-deep-dives"
-            style={{
-              background: "color-mix(in srgb, var(--card-surface) 75%, var(--background))",
-              border: "0.5px solid var(--border)",
-              borderRadius: "var(--radius-lg)",
-              padding: "20px",
-              marginTop: "52px",
-            }}
-          >
+        </div>
+      </section>
+
+      {/* ── Deep Dives — visually distinct section ─────────────────────────── */}
+      <section
+        id="project-deep-dives"
+        style={{
+          padding: "var(--section-pad-y) 24px",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        {/* Cream overlay background — matches homepage Problem / How It Works */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: "var(--overlay-section)",
+            pointerEvents: "none",
+          }}
+        />
+
+        {/* Radial glows */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            top: "8%",
+            left: "4%",
+            width: "360px",
+            height: "280px",
+            borderRadius: "50%",
+            background: "var(--glow-green-soft)",
+            filter: "blur(60px)",
+            pointerEvents: "none",
+          }}
+        />
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            bottom: "10%",
+            right: "4%",
+            width: "300px",
+            height: "220px",
+            borderRadius: "50%",
+            background: "var(--glow-navy-soft)",
+            filter: "blur(60px)",
+            pointerEvents: "none",
+          }}
+        />
+
+        {/* Decorative corner lines */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            top: 40,
+            left: 40,
+            width: 48,
+            height: 48,
+            borderTop: "2px solid var(--accent)",
+            borderLeft: "2px solid var(--accent)",
+            opacity: 0.3,
+          }}
+        />
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            bottom: 40,
+            right: 40,
+            width: 48,
+            height: 48,
+            borderBottom: "2px solid var(--accent)",
+            borderRight: "2px solid var(--accent)",
+            opacity: 0.3,
+          }}
+        />
+
+        <div style={{ maxWidth: "860px", margin: "0 auto", position: "relative" }}>
             <Reveal delay={100}>
               <SectionLabel label="Project deep dives" />
+            </Reveal>
+            <Reveal delay={110}>
+              <h2
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "clamp(24px, 3.5vw, 36px)",
+                  fontWeight: "normal",
+                  color: "var(--foreground)",
+                  margin: "0 0 8px",
+                  lineHeight: 1.25,
+                }}
+              >
+                What each product does and why it matters.
+              </h2>
             </Reveal>
             <Reveal delay={120}>
               <p
                 style={{
-                  margin: "4px 0 16px",
-                  fontSize: "13px",
-                  color: "var(--muted)",
-                  lineHeight: 1.5,
+                  margin: "0 0 32px",
+                  fontSize: "15px",
+                  color: "var(--foreground)",
+                  lineHeight: 1.65,
+                  fontWeight: 300,
+                  maxWidth: "540px",
                 }}
               >
                 Expand each project to review detailed impact assumptions and value levers.
@@ -387,7 +488,7 @@ export default function TmcBenefitsPage() {
             </Reveal>
 
             {products.map((product, i) => (
-              <Reveal key={product.num} delay={140 + i * 60}>
+              <Reveal key={product.num} delay={130 + i * 40}>
                 <details
                   id={`project-${product.slug}`}
                   className="tmc-deep-dive-toggle"
@@ -395,8 +496,9 @@ export default function TmcBenefitsPage() {
                   style={{
                     background: "var(--card-surface)",
                     border: "0.5px solid var(--border)",
+                    borderLeft: `4px solid ${accentBorders[product.accentColor]}`,
                     borderRadius: "var(--radius-lg)",
-                    marginBottom: "12px",
+                    marginBottom: "20px",
                     overflow: "hidden",
                   }}
                 >
@@ -500,8 +602,9 @@ export default function TmcBenefitsPage() {
                         <div
                           style={{
                             fontSize: "13px",
-                            color: "var(--muted)",
-                            lineHeight: 1.55,
+                            color: "var(--foreground)",
+                            lineHeight: 1.65,
+                            fontWeight: 300,
                             flex: 1,
                           }}
                         >
@@ -539,7 +642,6 @@ export default function TmcBenefitsPage() {
                 </details>
               </Reveal>
             ))}
-          </div>
         </div>
       </section>
     </>
