@@ -167,7 +167,7 @@ const teamLegend: Record<Team, string> = {
 /* ── Component ──────────────────────────────────────────────────────────── */
 
 export default function ProductTableToggle() {
-  const [mode, setMode] = useState<"overview" | "headcount">("overview");
+  const [mode, setMode] = useState<"overview" | "headcount">("headcount");
   const [rows, setRows] = useState<Product[]>(initialProducts);
   const dragIndex = useRef<number | null>(null);
   const [dragOverIndex, setDragOverIndex] = useState<number | null>(null);
@@ -240,7 +240,7 @@ export default function ProductTableToggle() {
           marginBottom: "24px",
         }}
       >
-        {(["overview", "headcount"] as const).map((m) => (
+        {(["headcount", "overview"] as const).map((m) => (
           <button
             key={m}
             onClick={() => setMode(m)}
