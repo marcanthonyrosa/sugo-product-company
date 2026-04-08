@@ -684,7 +684,7 @@ export default function HomeClient() {
                   <a href="https://cal.com" target="_blank" rel="noopener noreferrer" className="btn-primary">
                     Book a Call
                   </a>
-                  <a href="mailto:marc@sugoproduct.com" className="btn-outline-light">
+                  <a href="mailto:marc@sugoproduct.com" className="button-secondary" style={{ color: "var(--color-cream)", borderColor: "rgba(245,239,214,0.35)" }}>
                     marc@sugoproduct.com
                   </a>
                 </div>

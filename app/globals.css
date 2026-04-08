@@ -435,7 +435,7 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-md);
-  border: 1px solid rgba(143, 163, 177, 0.4);
+  border: 1px solid var(--nav-border);
   background: transparent;
   padding: 12px 20px;
   font-family: var(--font-mono);
