@@ -52,6 +52,7 @@ interface Benefit {
 
 interface Product {
   num: string;
+  slug: string;
   name: string;
   tag: string;
   benefits: Benefit[];
@@ -60,6 +61,7 @@ interface Product {
 const products: Product[] = [
   {
     num: "01",
+    slug: "portfolio-intelligence-platform",
     name: "Portfolio intelligence platform",
     tag: "Tom Luby · Innovation + Venture Fund",
     benefits: [
@@ -82,6 +84,7 @@ const products: Product[] = [
   },
   {
     num: "02",
+    slug: "social-media-marketing-automation",
     name: "Social media & marketing automation",
     tag: "Bill McKeon · Communications + Talent + Brand",
     benefits: [
@@ -113,6 +116,7 @@ const products: Product[] = [
   },
   {
     num: "03",
+    slug: "strategic-business-intelligence",
     name: "Strategic business intelligence",
     tag: "Bill McKeon · Fund + Business Development",
     benefits: [
@@ -137,6 +141,7 @@ const products: Product[] = [
   },
   {
     num: "04",
+    slug: "program-operations-diligence-automation",
     name: "Program operations & diligence automation",
     tag: "Tom Luby · Accelerator + Program teams",
     benefits: [
@@ -160,6 +165,7 @@ const products: Product[] = [
   },
   {
     num: "05",
+    slug: "eir-talent-pipeline",
     name: "EIR talent pipeline",
     tag: "Tom Luby · Venture Studio + T Labs",
     benefits: [
@@ -177,6 +183,7 @@ const products: Product[] = [
   },
   {
     num: "06",
+    slug: "philanthropic-investment-intelligence",
     name: "Philanthropic investment intelligence",
     tag: "Bill McKeon · Foundation + Development",
     benefits: [
@@ -225,6 +232,11 @@ export default function TmcBenefitsPage() {
         @media (max-width: 640px) {
           .benefits-summary-grid { grid-template-columns: 1fr !important; }
         }
+        .tmc-deep-dive-toggle summary::-webkit-details-marker { display: none; }
+        .tmc-deep-dive-toggle[open] .tmc-chevron { transform: rotate(180deg); }
+        .tmc-deep-dive-toggle .tmc-chevron {
+          transition: transform 160ms ease;
+        }
       `}</style>
 
       <section
@@ -233,245 +245,301 @@ export default function TmcBenefitsPage() {
           background: "var(--background)",
         }}
       >
-        <div style={{ maxWidth: "740px", margin: "0 auto" }}>
-
-          {/* ── Org-wide impact summary ──────────────────────────────── */}
-          <Reveal delay={0}>
-            <SectionLabel label="Org-wide impact summary" />
-          </Reveal>
-
-          <Reveal delay={60}>
-            <div
-              className="benefits-summary-grid"
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
-                gap: "10px",
-                marginBottom: "48px",
-              }}
-            >
-              {metrics.map((m) => (
-                <div
-                  key={m.label}
-                  style={{
-                    background: "var(--card-surface)",
-                    border: "0.5px solid var(--border)",
-                    borderRadius: "var(--radius)",
-                    padding: "16px 18px",
-                  }}
-                >
-                  <div
-                    style={{
-                      fontSize: "12px",
-                      color: "var(--muted)",
-                      marginBottom: "6px",
-                    }}
-                  >
-                    {m.label}
-                  </div>
-                  <div
-                    style={{
-                      fontSize: "22px",
-                      fontWeight: 500,
-                      color: "var(--foreground)",
-                      lineHeight: 1.1,
-                    }}
-                  >
-                    {m.value}
-                  </div>
-                  {m.note && (
-                    <div
-                      style={{
-                        fontSize: "11px",
-                        color: "var(--muted)",
-                        marginTop: "5px",
-                        lineHeight: 1.4,
-                      }}
-                    >
-                      {m.note}
-                    </div>
-                  )}
-                  {m.tags && (
-                    <div style={{ marginTop: "5px" }}>
-                      {m.tags.map((tag) => (
-                        <span
-                          key={tag.text}
-                          className={
-                            tag.variant === "innovation"
-                              ? "ptt-team-innovation"
-                              : "ptt-team-comms"
-                          }
-                          style={{
-                            display: "inline-block",
-                            fontSize: "11px",
-                            fontWeight: 500,
-                            padding: "1px 7px",
-                            borderRadius: "100px",
-                            margin: "2px 2px 0 0",
-                            ...(tag.variant === "innovation"
-                              ? { background: "#E1F5EE", color: "#085041" }
-                              : { background: "#EEEDFE", color: "#3C3489" }),
-                          }}
-                        >
-                          {tag.text}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </Reveal>
-
-          {/* ── Product table toggle ────────────────────────────────── */}
-          <Reveal delay={90}>
-            <ProductTableToggle />
-          </Reveal>
-
-          {/* ── Product by product ───────────────────────────────────── */}
-          <Reveal delay={120}>
-            <SectionLabel label="Product by product" />
-          </Reveal>
-
-          {products.map((product, i) => (
-            <Reveal key={product.num} delay={160 + i * 60}>
-              <div
+        <div style={{ maxWidth: "860px", margin: "0 auto" }}>
+          <div id="portfolio-overview" style={{ marginBottom: "40px" }}>
+            <Reveal delay={0}>
+              <SectionLabel label="Portfolio overview" />
+            </Reveal>
+            <Reveal delay={20}>
+              <p
                 style={{
-                  background: "var(--card-surface)",
-                  border: "0.5px solid var(--border)",
-                  borderRadius: "var(--radius-lg)",
-                  marginBottom: "16px",
-                  overflow: "hidden",
+                  margin: "4px 0 18px",
+                  fontSize: "13px",
+                  color: "var(--muted)",
+                  lineHeight: 1.5,
                 }}
               >
-                {/* Card header */}
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "flex-start",
-                    gap: "12px",
-                    padding: "16px 20px 12px",
-                    borderBottom: "0.5px solid var(--border)",
-                  }}
-                >
+                Snapshot of org-level KPI performance and the project portfolio.
+              </p>
+            </Reveal>
+            <Reveal delay={40}>
+              <div
+                className="benefits-summary-grid"
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+                  gap: "10px",
+                  marginBottom: "22px",
+                }}
+              >
+                {metrics.map((m) => (
                   <div
+                    key={m.label}
                     style={{
-                      fontSize: "11px",
-                      fontWeight: 500,
-                      fontFamily: "var(--font-mono)",
-                      color: "var(--muted)",
-                      marginTop: "2px",
-                      minWidth: "20px",
+                      background: "var(--card-surface)",
+                      border: "0.5px solid var(--border)",
+                      borderRadius: "var(--radius)",
+                      padding: "16px 18px",
                     }}
                   >
-                    {product.num}
-                  </div>
-                  <div>
                     <div
                       style={{
-                        fontSize: "15px",
+                        fontSize: "12px",
+                        color: "var(--muted)",
+                        marginBottom: "6px",
+                      }}
+                    >
+                      {m.label}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: "22px",
                         fontWeight: 500,
                         color: "var(--foreground)",
-                        marginBottom: "3px",
+                        lineHeight: 1.1,
                       }}
                     >
-                      {product.name}
+                      {m.value}
                     </div>
-                    <div
-                      style={{
-                        fontSize: "11px",
-                        color: "var(--muted)",
-                      }}
-                    >
-                      {product.tag}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card body */}
-                <div style={{ padding: "14px 20px" }}>
-                  {product.benefits.map((benefit, j) => (
-                    <div
-                      key={j}
-                      style={{
-                        display: "flex",
-                        gap: "10px",
-                        padding: "8px 0",
-                        borderBottom:
-                          j < product.benefits.length - 1
-                            ? "0.5px solid var(--border)"
-                            : "none",
-                        paddingBottom:
-                          j === product.benefits.length - 1 ? "0" : "8px",
-                      }}
-                    >
-                      {/* Icon dot */}
+                    {m.note && (
                       <div
                         style={{
-                          width: "20px",
-                          height: "20px",
-                          borderRadius: "50%",
-                          flexShrink: 0,
-                          marginTop: "2px",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          background: dotColors[benefit.color].bg,
-                        }}
-                      >
-                        <div
-                          style={{
-                            width: "6px",
-                            height: "6px",
-                            borderRadius: "50%",
-                            background: dotColors[benefit.color].dot,
-                          }}
-                        />
-                      </div>
-
-                      {/* Text */}
-                      <div
-                        style={{
-                          fontSize: "13px",
+                          fontSize: "11px",
                           color: "var(--muted)",
-                          lineHeight: 1.55,
-                          flex: 1,
+                          marginTop: "5px",
+                          lineHeight: 1.4,
                         }}
                       >
-                        <strong
-                          style={{
-                            fontWeight: 500,
-                            color: "var(--foreground)",
-                          }}
-                        >
-                          {benefit.title}
-                        </strong>{" "}
-                        {benefit.body}
-                        {benefit.pill && (
+                        {m.note}
+                      </div>
+                    )}
+                    {m.tags && (
+                      <div style={{ marginTop: "5px" }}>
+                        {m.tags.map((tag) => (
                           <span
-                            className={`pill-${benefit.pill.variant}`}
+                            key={tag.text}
+                            className={
+                              tag.variant === "innovation"
+                                ? "ptt-team-innovation"
+                                : "ptt-team-comms"
+                            }
                             style={{
                               display: "inline-block",
                               fontSize: "11px",
                               fontWeight: 500,
-                              padding: "2px 8px",
+                              padding: "1px 7px",
                               borderRadius: "100px",
-                              marginLeft: "6px",
-                              verticalAlign: "middle",
-                              whiteSpace: "nowrap",
-                              ...pillStyles[benefit.pill.variant],
+                              margin: "2px 2px 0 0",
+                              ...(tag.variant === "innovation"
+                                ? { background: "#E1F5EE", color: "#085041" }
+                                : { background: "#EEEDFE", color: "#3C3489" }),
                             }}
                           >
-                            {benefit.pill.label}
+                            {tag.text}
                           </span>
-                        )}
+                        ))}
                       </div>
-                    </div>
-                  ))}
-                </div>
+                    )}
+                  </div>
+                ))}
               </div>
             </Reveal>
-          ))}
+
+            <Reveal delay={70}>
+              <div
+                id="projects-table"
+                style={{
+                  background: "var(--card-surface)",
+                  border: "0.5px solid var(--border)",
+                  borderRadius: "var(--radius-lg)",
+                  padding: "12px",
+                }}
+              >
+                <ProductTableToggle />
+              </div>
+            </Reveal>
+          </div>
+
+          <div
+            id="project-deep-dives"
+            style={{
+              background: "color-mix(in srgb, var(--card-surface) 75%, var(--background))",
+              border: "0.5px solid var(--border)",
+              borderRadius: "var(--radius-lg)",
+              padding: "20px",
+              marginTop: "52px",
+            }}
+          >
+            <Reveal delay={100}>
+              <SectionLabel label="Project deep dives" />
+            </Reveal>
+            <Reveal delay={120}>
+              <p
+                style={{
+                  margin: "4px 0 16px",
+                  fontSize: "13px",
+                  color: "var(--muted)",
+                  lineHeight: 1.5,
+                }}
+              >
+                Expand each project to review detailed impact assumptions and value levers.
+              </p>
+            </Reveal>
+
+            {products.map((product, i) => (
+              <Reveal key={product.num} delay={140 + i * 60}>
+                <details
+                  id={`project-${product.slug}`}
+                  className="tmc-deep-dive-toggle"
+                  open={i === 0}
+                  style={{
+                    background: "var(--card-surface)",
+                    border: "0.5px solid var(--border)",
+                    borderRadius: "var(--radius-lg)",
+                    marginBottom: "12px",
+                    overflow: "hidden",
+                  }}
+                >
+                  <summary
+                    style={{
+                      listStyle: "none",
+                      display: "flex",
+                      alignItems: "flex-start",
+                      justifyContent: "space-between",
+                      gap: "12px",
+                      padding: "16px 20px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    <div style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
+                      <div
+                        style={{
+                          fontSize: "11px",
+                          fontWeight: 500,
+                          fontFamily: "var(--font-mono)",
+                          color: "var(--muted)",
+                          marginTop: "2px",
+                          minWidth: "20px",
+                        }}
+                      >
+                        {product.num}
+                      </div>
+                      <div>
+                        <div
+                          style={{
+                            fontSize: "15px",
+                            fontWeight: 500,
+                            color: "var(--foreground)",
+                            marginBottom: "3px",
+                          }}
+                        >
+                          {product.name}
+                        </div>
+                        <div style={{ fontSize: "11px", color: "var(--muted)" }}>
+                          {product.tag}
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "8px",
+                        color: "var(--muted)",
+                        flexShrink: 0,
+                      }}
+                    >
+                      <span style={{ fontSize: "11px" }}>
+                        {product.benefits.length} points
+                      </span>
+                      <span className="tmc-chevron" aria-hidden="true">
+                        ▾
+                      </span>
+                    </div>
+                  </summary>
+
+                  <div style={{ padding: "0 20px 14px", borderTop: "0.5px solid var(--border)" }}>
+                    {product.benefits.map((benefit, j) => (
+                      <div
+                        key={benefit.title}
+                        style={{
+                          display: "flex",
+                          gap: "10px",
+                          padding: "11px 0",
+                          borderBottom:
+                            j < product.benefits.length - 1
+                              ? "0.5px solid var(--border)"
+                              : "none",
+                          paddingBottom:
+                            j === product.benefits.length - 1 ? "0" : "11px",
+                        }}
+                      >
+                        <div
+                          style={{
+                            width: "20px",
+                            height: "20px",
+                            borderRadius: "50%",
+                            flexShrink: 0,
+                            marginTop: "2px",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            background: dotColors[benefit.color].bg,
+                          }}
+                        >
+                          <div
+                            style={{
+                              width: "6px",
+                              height: "6px",
+                              borderRadius: "50%",
+                              background: dotColors[benefit.color].dot,
+                            }}
+                          />
+                        </div>
+
+                        <div
+                          style={{
+                            fontSize: "13px",
+                            color: "var(--muted)",
+                            lineHeight: 1.55,
+                            flex: 1,
+                          }}
+                        >
+                          <strong
+                            style={{
+                              fontWeight: 500,
+                              color: "var(--foreground)",
+                            }}
+                          >
+                            {benefit.title}
+                          </strong>{" "}
+                          {benefit.body}
+                          {benefit.pill && (
+                            <span
+                              className={`pill-${benefit.pill.variant}`}
+                              style={{
+                                display: "inline-block",
+                                fontSize: "11px",
+                                fontWeight: 500,
+                                padding: "2px 8px",
+                                borderRadius: "100px",
+                                marginLeft: "6px",
+                                verticalAlign: "middle",
+                                whiteSpace: "nowrap",
+                                ...pillStyles[benefit.pill.variant],
+                              }}
+                            >
+                              {benefit.pill.label}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </details>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
     </>
