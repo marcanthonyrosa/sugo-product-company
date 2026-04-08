@@ -15,7 +15,7 @@ export default function NotFound() {
         padding: "48px 24px",
       }}
     >
-      <TomatoLogo size={56} />
+      <TomatoLogo size={42} />
       <div
         style={{
           fontFamily: "var(--font-mono)",
