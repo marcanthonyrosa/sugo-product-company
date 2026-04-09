@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 /* ── Types ──────────────────────────────────────────────────────────────── */
 
@@ -173,13 +173,32 @@ export default function ProductTableToggle() {
   const [dragOverIndex, setDragOverIndex] = useState<number | null>(null);
   const [isDark, setIsDark] = useState(false);
 
-  // Detect dark mode on mount
-  if (typeof window !== "undefined") {
-    const mq = window.matchMedia("(prefers-color-scheme: dark)");
-    if (mq.matches !== isDark) {
-      // We'll handle this in an effect-like way below
-    }
-  }
+  // Load saved ranking on mount
+  useEffect(() => {
+    fetch("/api/tmc/ranking")
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data.order)) {
+          const slugOrder: string[] = data.order;
+          setRows((prev) => {
+            const bySlug = new Map(prev.map((p) => [p.slug, p]));
+            const sorted = slugOrder
+              .map((slug) => bySlug.get(slug))
+              .filter(Boolean) as Product[];
+            // Append any products not in the saved order
+            const seen = new Set(slugOrder);
+            for (const p of prev) {
+              if (!seen.has(p.slug)) sorted.push(p);
+            }
+            return sorted.map((r, i) => ({
+              ...r,
+              id: String(i + 1).padStart(2, "0"),
+            }));
+          });
+        }
+      })
+      .catch(() => {}); // silently fall back to default order
+  }, []);
 
   const handleDragStart = (index: number) => {
     dragIndex.current = index;
@@ -199,12 +218,19 @@ export default function ProductTableToggle() {
   const handleDragEnd = () => {
     dragIndex.current = null;
     setDragOverIndex(null);
-    setRows((prev) =>
-      prev.map((r, i) => ({
+    setRows((prev) => {
+      const updated = prev.map((r, i) => ({
         ...r,
         id: String(i + 1).padStart(2, "0"),
-      }))
-    );
+      }));
+      // Persist to Redis via API
+      fetch("/api/tmc/ranking", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ order: updated.map((r) => r.slug) }),
+      }).catch(() => {});
+      return updated;
+    });
   };
 
   const getTeamStyle = (team: Team) => teamStyles[team];
