@@ -232,7 +232,8 @@ export default function HomeClient() {
           minHeight: "90vh",
           alignItems: "center",
           overflow: "hidden",
-          paddingTop: "32px",
+          paddingTop: "0",
+          paddingBottom: "20px",
         }}
       >
         {/* Layer 1: Grid overlay */}

@@ -84,7 +84,7 @@ export default function Nav() {
                 lineHeight: 1,
               }}
             >
-              Sugo
+              Sugo Product Company
             </span>
           </Link>
 
