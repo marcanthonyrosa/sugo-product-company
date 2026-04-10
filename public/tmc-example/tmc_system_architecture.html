@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    width: 1920px; height: 1080px; overflow: hidden;
+    background: #F8F9FC;
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: #111827;
+  }
+  body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .slide {
+    position: relative;
+    width: 1920px; height: 1080px;
+    padding: 52px 80px 44px;
+    display: flex; flex-direction: column;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    margin-bottom: 28px; flex-shrink: 0;
+  }
+  .eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #1A5CA8; margin-bottom: 6px; }
+  .title { font-size: 28px; font-weight: 700; color: #0D2D5E; letter-spacing: -0.02em; }
+  .subtitle { font-size: 13px; color: #6B7280; margin-top: 4px; }
+  .badge { background: #EBF3FC; border: 1px solid #B5D3F5; color: #1A5CA8; font-size: 11px; font-weight: 600; padding: 5px 14px; border-radius: 20px; letter-spacing: 0.04em; align-self: flex-start; }
+
+  /* ── DIAGRAM AREA ── */
+  .diagram {
+    flex: 1;
+    display: flex; flex-direction: column;
+    gap: 16px;
+    position: relative;
+  }
+
+  /* ── GENERIC LAYER ── */
+  .layer {
+    border-radius: 12px;
+    border: 1px solid;
+    position: relative;
+    padding: 22px 28px 16px;
+  }
+  .layer-label {
+    position: absolute; top: -11px; left: 18px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
+    padding: 2px 10px; border-radius: 4px; background: #F8F9FC;
+    white-space: nowrap;
+  }
+
+  .layer-sources { background: rgba(0,0,0,0.012); border-color: #E5E7EB; padding: 22px 28px 16px; }
+  .lbl-gray { color: #9CA3AF; border: 1px solid #E5E7EB; }
+
+  .layer-supabase { background: rgba(16,185,129,0.03); border-color: rgba(16,185,129,0.25); flex: 1; }
+  .lbl-teal { color: #059669; border: 1px solid rgba(16,185,129,0.3); }
+  .supa-note { font-size: 9px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(5,150,105,0.45); margin-top: 10px; text-align: center; }
+
+  .bottom-row { display: flex; gap: 16px; }
+  .layer-nextjs { flex: 1; background: rgba(26,92,168,0.03); border-color: rgba(26,92,168,0.2); }
+  .lbl-blue { color: #1A5CA8; border: 1px solid rgba(26,92,168,0.25); }
+  .layer-resend { width: 460px; flex-shrink: 0; background: rgba(234,88,12,0.03); border-color: rgba(234,88,12,0.2); }
+  .lbl-orange { color: #EA580C; border: 1px solid rgba(234,88,12,0.25); }
+
+  .node-row { display: flex; justify-content: space-evenly; align-items: center; gap: 12px; }
+
+  .node { border-radius: 9px; border: 1px solid; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 3px; padding: 10px 14px; flex-shrink: 0; }
+  .node-title { font-size: 12px; font-weight: 600; line-height: 1.2; white-space: nowrap; }
+  .node-sub   { font-size: 10px; color: #6B7280; line-height: 1.3; white-space: nowrap; }
+
+  .src       { background: #fff; border-color: #D1D5DB; color: #374151; box-shadow: 0 1px 3px rgba(0,0,0,0.06); min-width: 170px; height: 62px; }
+  .src-claude{ background: #F5F3FF; border-color: rgba(109,40,217,0.3); color: #4C1D95; box-shadow: 0 1px 3px rgba(0,0,0,0.06); min-width: 160px; height: 62px; }
+  .ef        { background: #F0FDF9; border-color: rgba(16,185,129,0.35); color: #065F46; min-width: 170px; height: 62px; }
+  .db        { background: #F0FDF9; border-color: rgba(16,185,129,0.3); color: #065F46; flex: 1; height: 62px; min-width: 0; }
+  .db-wide   { min-width: 260px; }
+  .nx        { background: #EBF3FC; border-color: rgba(26,92,168,0.25); color: #1A5CA8; flex: 1; height: 58px; }
+  .rs        { background: #FFF7ED; border-color: rgba(234,88,12,0.25); color: #EA580C; flex: 1; height: 58px; }
+
+  .supa-divider { width: 100%; height: 1px; background: rgba(16,185,129,0.12); margin: 12px 0; }
+
+  .legend { position: absolute; bottom: 0; right: 0; display: flex; gap: 16px; align-items: center; }
+  .leg-item { display: flex; align-items: center; gap: 6px; font-size: 10px; color: #6B7280; }
+  .leg-dot  { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+  .wm { position: absolute; bottom: 0; left: 0; font-size: 10px; color: #D1D5DB; letter-spacing: 0.06em; }
+
+  .connector-svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+</style>
+</head>
+<body>
+<div class="slide">
+
+  <div class="header">
+    <div>
+      <div class="eyebrow">TMC Intelligence — Technical Architecture</div>
+      <div class="title">System Architecture Overview</div>
+      <div class="subtitle">Three-layer managed stack — external data sources · Supabase backend · Next.js + Vercel frontend</div>
+    </div>
+    <div class="badge">Phase 3 — Architecture &amp; Design</div>
+  </div>
+
+  <div class="diagram" id="diagram">
+
+    <!-- ROW 1: External sources -->
+    <div class="layer layer-sources">
+      <div class="layer-label lbl-gray">External data sources</div>
+      <div class="node-row">
+        <div class="node src" id="n-crunch">
+          <div class="node-title">Crunchbase API</div>
+          <div class="node-sub">Funding rounds · employees</div>
+        </div>
+        <div class="node src" id="n-proxy">
+          <div class="node-title">Proxycurl (LinkedIn)</div>
+          <div class="node-sub">Headcount · key hires</div>
+        </div>
+        <div class="node src" id="n-news">
+          <div class="node-title">NewsAPI</div>
+          <div class="node-sub">Press mentions · milestones</div>
+        </div>
+        <div class="node src" id="n-fda">
+          <div class="node-title">openFDA API</div>
+          <div class="node-sub">510(k) · Breakthrough Device</div>
+        </div>
+        <div style="flex:1"></div>
+        <div class="node src-claude" id="n-claude">
+          <div class="node-title">Claude API</div>
+          <div class="node-sub">Signal classification</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 2: Supabase -->
+    <div class="layer layer-supabase" id="layer-supa">
+      <div class="layer-label lbl-teal">Supabase — managed backend (Postgres · Auth · Realtime · Edge Functions · pg_cron)</div>
+
+      <div class="node-row" style="justify-content:flex-start; gap:16px;" id="ef-row">
+        <div class="node ef" id="n-enrich">
+          <div class="node-title">enrich-batch</div>
+          <div class="node-sub">Fetch · normalise · 50/run</div>
+        </div>
+        <div class="node ef" id="n-classify">
+          <div class="node-title">classify-signal</div>
+          <div class="node-sub">Claude API · JSON output</div>
+        </div>
+        <div class="node ef" id="n-dedup">
+          <div class="node-title">dedup</div>
+          <div class="node-sub">Merge cross-source events</div>
+        </div>
+        <div class="node ef" id="n-digest-fn">
+          <div class="node-title">send-digest</div>
+          <div class="node-sub">Build · render · dispatch</div>
+        </div>
+      </div>
+
+      <div class="supa-divider"></div>
+
+      <div class="node-row" id="db-row">
+        <div class="node db db-wide" id="n-postgres">
+          <div class="node-title">PostgreSQL database</div>
+          <div class="node-sub">companies · signals · subscribers · digest_runs</div>
+        </div>
+        <div class="node db" id="n-cron">
+          <div class="node-title">pg_cron</div>
+          <div class="node-sub">Nightly 2 AM CT</div>
+        </div>
+        <div class="node db" id="n-realtime">
+          <div class="node-title">Realtime</div>
+          <div class="node-sub">Live feed push</div>
+        </div>
+        <div class="node db" id="n-auth">
+          <div class="node-title">Auth</div>
+          <div class="node-sub">Magic link</div>
+        </div>
+        <div class="node db" id="n-storage">
+          <div class="node-title">Storage</div>
+          <div class="node-sub">Logos · assets</div>
+        </div>
+      </div>
+
+      <div class="supa-note">Supabase Edge Functions (Deno/TypeScript) — zero servers to operate</div>
+    </div>
+
+    <!-- ROW 3: Next.js + Resend -->
+    <div class="bottom-row">
+      <div class="layer layer-nextjs" id="layer-next">
+        <div class="layer-label lbl-blue">Next.js 15 App Router — deployed on Vercel</div>
+        <div class="node-row">
+          <div class="node nx">
+            <div class="node-title">Internal dashboard</div>
+            <div class="node-sub">/dashboard · /companies · /metrics</div>
+          </div>
+          <div class="node nx">
+            <div class="node-title">Public portfolio</div>
+            <div class="node-sub">/portfolio · embeddable</div>
+          </div>
+          <div class="node nx">
+            <div class="node-title">Auth guard</div>
+            <div class="node-sub">Supabase SSR</div>
+          </div>
+          <div class="node nx">
+            <div class="node-title">PostHog</div>
+            <div class="node-sub">Analytics</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="layer layer-resend" id="layer-resend">
+        <div class="layer-label lbl-orange">Resend · React Email</div>
+        <div class="node-row">
+          <div class="node rs">
+            <div class="node-title">Weekly digest</div>
+            <div class="node-sub">Narrative + card list</div>
+          </div>
+          <div class="node rs">
+            <div class="node-title">Instant alert</div>
+            <div class="node-sub">High signal · same-day</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <svg class="connector-svg" id="connectors">
+      <defs>
+        <marker id="ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+          <path d="M1 1L7 4L1 7" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="context-stroke"/>
+        </marker>
+      </defs>
+    </svg>
+
+    <div class="legend">
+      <div class="leg-item"><div class="leg-dot" style="background:#059669"></div>Edge Functions</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#10B981"></div>Database / infra</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#1A5CA8"></div>Next.js / Vercel</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#EA580C"></div>Email (Resend)</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#9CA3AF"></div>External APIs</div>
+    </div>
+
+    <div class="wm">TMC Intelligence · Confidential</div>
+  </div>
+</div>
+
+<script>
+window.addEventListener('load', () => {
+  const svg = document.getElementById('connectors');
+  const diagram = document.getElementById('diagram');
+  const dr = diagram.getBoundingClientRect();
+
+  function rect(id) {
+    const el = document.getElementById(id);
+    if (!el) return null;
+    const r = el.getBoundingClientRect();
+    return {
+      top: r.top - dr.top, bottom: r.bottom - dr.top,
+      left: r.left - dr.left, right: r.right - dr.left,
+      cx: (r.left + r.right) / 2 - dr.left,
+      cy: (r.top + r.bottom) / 2 - dr.top,
+    };
+  }
+
+  function line(x1, y1, x2, y2, stroke, dashed, width) {
+    const l = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    l.setAttribute('x1', x1); l.setAttribute('y1', y1);
+    l.setAttribute('x2', x2); l.setAttribute('y2', y2);
+    l.setAttribute('stroke', stroke); l.setAttribute('stroke-width', width || 1.5);
+    l.setAttribute('marker-end', 'url(#ah)');
+    if (dashed) l.setAttribute('stroke-dasharray', '5 4');
+    svg.appendChild(l);
+  }
+
+  function path(d, stroke, dashed, width) {
+    const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    p.setAttribute('d', d); p.setAttribute('fill', 'none');
+    p.setAttribute('stroke', stroke); p.setAttribute('stroke-width', width || 1.5);
+    p.setAttribute('marker-end', 'url(#ah)');
+    if (dashed) p.setAttribute('stroke-dasharray', '5 4');
+    svg.appendChild(p);
+  }
+
+  const enrich   = rect('n-enrich');
+  const classify = rect('n-classify');
+  const dedup    = rect('n-dedup');
+  const digestFn = rect('n-digest-fn');
+  const postgres  = rect('n-postgres');
+  const cron     = rect('n-cron');
+  const realtime = rect('n-realtime');
+  const claude   = rect('n-claude');
+  const layerSupa  = rect('layer-supa');
+  const layerNext  = rect('layer-next');
+  const layerResend = rect('layer-resend');
+
+  ['n-crunch','n-proxy','n-news','n-fda'].forEach(id => {
+    const s = rect(id);
+    if (s && enrich) line(s.cx, s.bottom, enrich.cx, enrich.top - 2, '#D1D5DB', true, 1.2);
+  });
+
+  if (enrich && classify)  line(enrich.right + 1,  enrich.cy,   classify.left - 1, classify.cy,  '#059669', false, 1.5);
+  if (classify && dedup)   line(classify.right + 1, classify.cy, dedup.left - 1,   dedup.cy,     '#059669', false, 1.5);
+
+  if (classify && claude && layerSupa) {
+    const midY = layerSupa.top - 8;
+    path(`M${classify.cx} ${classify.top} L${classify.cx} ${midY} L${claude.cx} ${midY} L${claude.cx} ${claude.bottom + 2}`, 'rgba(109,40,217,0.4)', true, 1.4);
+  }
+  if (dedup && postgres) {
+    path(`M${dedup.cx} ${dedup.bottom + 1} L${dedup.cx} ${postgres.top - 12} L${postgres.cx} ${postgres.top - 12} L${postgres.cx} ${postgres.top - 1}`, '#059669', false, 1.5);
+  }
+  if (cron && enrich && layerSupa) {
+    const loopX = layerSupa.left - 14;
+    path(`M${cron.left - 1} ${cron.cy} L${loopX} ${cron.cy} L${loopX} ${enrich.cy} L${enrich.left - 1} ${enrich.cy}`, '#D1D5DB', true, 1.2);
+  }
+  if (realtime && layerNext) {
+    line(realtime.cx, realtime.bottom + 1, realtime.cx, layerNext.top - 1, 'rgba(26,92,168,0.45)', false, 1.5);
+  }
+  if (digestFn && layerResend) {
+    path(`M${digestFn.cx} ${digestFn.bottom + 1} L${digestFn.cx} ${layerResend.top + 30} L${layerResend.left + 230} ${layerResend.top + 30} L${layerResend.left + 230} ${layerResend.top - 1}`, 'rgba(234,88,12,0.4)', true, 1.4);
+  }
+  if (layerNext && postgres) {
+    const sdkX = layerNext.left + 200;
+    path(`M${sdkX} ${layerNext.top - 1} L${sdkX} ${postgres.bottom + 10} L${postgres.cx} ${postgres.bottom + 10} L${postgres.cx} ${postgres.bottom + 1}`, 'rgba(26,92,168,0.3)', true, 1.2);
+  }
+});
+</script>
+</body>
+</html>
