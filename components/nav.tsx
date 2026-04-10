@@ -95,9 +95,9 @@ export default function Nav() {
                 {link.label}
               </Link>
             ))}
-            <Link href="/#contact" className="button-primary">
+            <a href="https://calendar.app.google/UkTiJRp4MpWsVLMXA" target="_blank" rel="noopener noreferrer" className="button-primary">
               Get In Touch
-            </Link>
+            </a>
           </div>
 
           {/* ── Mobile hamburger ───────────────────────────────────────── */}
@@ -195,14 +195,16 @@ export default function Nav() {
               {link.label}
             </Link>
           ))}
-          <Link
-            href="/#contact"
+          <a
+            href="https://calendar.app.google/UkTiJRp4MpWsVLMXA"
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={close}
             className="button-primary"
             style={{ marginTop: "20px", justifyContent: "center" }}
           >
             Get In Touch
-          </Link>
+          </a>
         </div>
       </div>
 

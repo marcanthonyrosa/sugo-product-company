@@ -143,7 +143,7 @@ export default function ProcessPage() {
         headline="Ready to start?"
         subhead="Engagements start with a 30-minute call. No decks, no sales process."
         buttonText="→ GET IN TOUCH"
-        buttonHref="/#contact"
+        buttonHref="https://calendar.app.google/UkTiJRp4MpWsVLMXA"
       />
 
       <style>{`
