@@ -271,6 +271,38 @@ export default function TmcBenefitsPage() {
         }}
       >
         <div style={{ maxWidth: "860px", margin: "0 auto" }}>
+          <div style={{ marginBottom: "36px" }}>
+            <Reveal delay={0}>
+              <h1
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "clamp(28px, 4vw, 42px)",
+                  fontWeight: "normal",
+                  color: "var(--foreground)",
+                  margin: "0 0 10px",
+                  lineHeight: 1.2,
+                  letterSpacing: "-0.01em",
+                }}
+              >
+                TMC discovery — spring 2026
+              </h1>
+            </Reveal>
+            <Reveal delay={20}>
+              <p
+                style={{
+                  margin: 0,
+                  fontSize: "15px",
+                  color: "var(--foreground)",
+                  lineHeight: 1.65,
+                  fontWeight: 300,
+                  maxWidth: "640px",
+                }}
+              >
+                A collection of tooling opportunities to help accelerate TMC&rsquo;s various initiatives, gathered from discovery calls with Bill, Tom, Ashley, Julia, and Blaine.
+              </p>
+            </Reveal>
+          </div>
+
           <div id="portfolio-overview" style={{ marginBottom: "40px" }}>
             <Reveal delay={0}>
               <SectionLabel label="Portfolio overview" />
