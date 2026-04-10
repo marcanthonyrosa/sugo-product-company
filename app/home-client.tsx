@@ -62,49 +62,64 @@ function FloatingShape({ size, color, top, left, right, bottom, delay = 0 }: {
   );
 }
 
-/* ── Problem card ───────────────────────────────────────────────────────── */
-function ProblemCard({ icon: Icon, color, text, delay }: {
-  icon: React.ElementType; color: string; text: string; delay: number;
-}) {
+/* ── Problem: compact list + headline split (no card chrome) ─────────── */
+const problemListItems: { icon: React.ElementType; iconColor: string; text: string }[] = [
+  { icon: LayoutGrid, iconColor: "rgba(17,34,64,0.9)", text: "You own product, growth, go-to-market, and everything else" },
+  { icon: Target, iconColor: "rgba(74,124,89,0.95)", text: "Product strategy gets deprioritized when things get busy" },
+  { icon: Clock, iconColor: "rgba(143,163,177,0.95)", text: "Tactical work keeps slipping to next week — indefinitely" },
+  { icon: Zap, iconColor: "rgba(74,124,89,0.85)", text: "Hiring a full-time CPO too early doesn't make sense yet" },
+];
+
+function ProblemBulletList() {
   return (
-    <FadeUp delay={delay}>
-      <motion.div
-        whileHover={{ y: -4, boxShadow: "0 12px 40px rgba(74,124,89,0.12)" }}
-        transition={{ duration: 0.2 }}
+    <FadeUp delay={0.18}>
+      <ul
         style={{
-          background: "var(--background)",
-          border: "1px solid var(--border)",
-          borderRadius: "var(--radius-xl)",
-          padding: "24px",
+          margin: 0,
+          padding: 0,
+          listStyle: "none",
           display: "flex",
           flexDirection: "column",
-          gap: "16px",
-          cursor: "default",
+          gap: "14px",
         }}
+        aria-label="Common product pressures for founders"
       >
-        <div style={{
-          width: 44,
-          height: 44,
-          borderRadius: "var(--radius)",
-          background: color,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexShrink: 0,
-        }}>
-          <Icon size={20} color="white" strokeWidth={1.5} />
-        </div>
-        <p style={{
-          fontFamily: "var(--font-body)",
-          fontSize: "15px",
-          color: "var(--foreground)",
-          margin: 0,
-          lineHeight: 1.6,
-          fontWeight: 400,
-        }}>
-          {text}
-        </p>
-      </motion.div>
+        {problemListItems.map((item) => {
+          const Icon = item.icon;
+          return (
+            <li
+              key={item.text}
+              style={{
+                display: "flex",
+                gap: "12px",
+                alignItems: "flex-start",
+              }}
+            >
+              <span
+                style={{
+                  display: "flex",
+                  flexShrink: 0,
+                  marginTop: "3px",
+                }}
+                aria-hidden
+              >
+                <Icon size={18} color={item.iconColor} strokeWidth={2} />
+              </span>
+              <span
+                style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: "15px",
+                  color: "var(--foreground)",
+                  lineHeight: 1.65,
+                  fontWeight: 400,
+                }}
+              >
+                {item.text}
+              </span>
+            </li>
+          );
+        })}
+      </ul>
     </FadeUp>
   );
 }
@@ -404,38 +419,13 @@ export default function HomeClient() {
             <UnderlineHeadline />
           </FadeUp>
 
-          <FadeUp delay={0.15}>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: "17px", color: "var(--foreground)", margin: "0 0 56px", lineHeight: 1.75, maxWidth: "600px", fontWeight: 300 }}>
-              You&apos;re building the product, managing the team, chasing revenue, and handling everything in between. Strategic product work shouldn&apos;t be the thing that slips.
-            </p>
-          </FadeUp>
-
-          {/* 2×2 grid */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "20px" }} className="two-col-grid">
-            <ProblemCard
-              icon={LayoutGrid}
-              color="rgba(17,34,64,0.85)"
-              text="You own product, growth, go-to-market, and everything else"
-              delay={0.1}
-            />
-            <ProblemCard
-              icon={Target}
-              color="rgba(74,124,89,0.85)"
-              text="Product strategy gets deprioritized when things get busy"
-              delay={0.2}
-            />
-            <ProblemCard
-              icon={Clock}
-              color="rgba(143,163,177,0.75)"
-              text="Tactical work keeps slipping to next week — indefinitely"
-              delay={0.3}
-            />
-            <ProblemCard
-              icon={Zap}
-              color="rgba(74,124,89,0.7)"
-              text="Hiring a full-time CPO too early doesn&apos;t make sense yet"
-              delay={0.4}
-            />
+          <div className="problem-split">
+            <FadeUp delay={0.15}>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "17px", color: "var(--foreground)", margin: 0, lineHeight: 1.75, maxWidth: "min(600px, 100%)", fontWeight: 300 }}>
+                You&apos;re building the product, managing the team, chasing revenue, and handling everything in between. Strategic product work shouldn&apos;t be the thing that slips.
+              </p>
+            </FadeUp>
+            <ProblemBulletList />
           </div>
         </div>
       </section>
@@ -702,6 +692,18 @@ export default function HomeClient() {
         }
         @media (min-width: 768px) {
           .contact-panel { padding: 56px 40px; }
+        }
+        .problem-split {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 28px;
+          align-items: start;
+        }
+        @media (min-width: 900px) {
+          .problem-split {
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(36px, 5vw, 64px);
+          }
         }
         @media (max-width: 640px) {
           .two-col-grid { grid-template-columns: 1fr !important; }
