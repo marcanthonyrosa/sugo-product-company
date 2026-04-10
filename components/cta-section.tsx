@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-
 interface CTASectionProps {
   headline?: string;
   subhead?: string;
@@ -14,7 +12,7 @@ export default function CTASection({
   headline = "Ready to offload product?",
   subhead = "Engagements start with a 30-minute call. No decks, no sales process.",
   buttonText = "→ GET IN TOUCH",
-  buttonHref = "/#work-with-us",
+  buttonHref = "https://calendar.app.google/UkTiJRp4MpWsVLMXA",
   showEmail = true,
 }: CTASectionProps) {
   return (
@@ -50,8 +48,10 @@ export default function CTASection({
         >
           {subhead}
         </p>
-        <Link
+        <a
           href={buttonHref}
+          target="_blank"
+          rel="noopener noreferrer"
           style={{
             display: "inline-block",
             fontFamily: "var(--font-mono)",
@@ -79,7 +79,7 @@ export default function CTASection({
           }}
         >
           {buttonText}
-        </Link>
+        </a>
         {showEmail && (
           <div style={{ marginTop: "20px" }}>
             <a

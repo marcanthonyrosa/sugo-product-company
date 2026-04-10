@@ -363,7 +363,7 @@ export default function HomeClient() {
                 gap: "16px",
               } as React.CSSProperties}
             >
-              <Link href="#contact" className="button-primary hero-cta-btn">Book a Call</Link>
+              <a href="https://calendar.app.google/UkTiJRp4MpWsVLMXA" target="_blank" rel="noopener noreferrer" className="button-primary hero-cta-btn">Book a Call</a>
               <Link href="#how-it-works" className="button-secondary hero-cta-btn">Learn More</Link>
             </div>
 
@@ -675,7 +675,7 @@ export default function HomeClient() {
               </FadeUp>
               <FadeUp delay={0.3}>
                 <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-                  <a href="https://cal.com" target="_blank" rel="noopener noreferrer" className="btn-primary">
+                  <a href="https://calendar.app.google/UkTiJRp4MpWsVLMXA" target="_blank" rel="noopener noreferrer" className="btn-primary">
                     Book a Call
                   </a>
                   <a href="mailto:marc@sugoproduct.com" className="button-secondary" style={{ color: "var(--color-cream)", borderColor: "rgba(245,239,214,0.35)" }}>
