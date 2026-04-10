@@ -114,7 +114,7 @@ function ServiceCard({ icon: Icon, title, description, delay }: {
   icon: React.ElementType; title: string; description: string; delay: number;
 }) {
   return (
-    <FadeUp delay={delay}>
+    <FadeUp delay={delay} style={{ height: "100%" }}>
       <motion.div
         whileHover={{ y: -3 }}
         transition={{ duration: 0.2 }}
@@ -129,6 +129,7 @@ function ServiceCard({ icon: Icon, title, description, delay }: {
           cursor: "default",
           position: "relative",
           overflow: "hidden",
+          height: "100%",
         }}
         className="service-card"
       >
@@ -460,7 +461,7 @@ export default function HomeClient() {
           </FadeUp>
 
           {/* 2×2 card grid */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "20px", marginBottom: "32px" }} className="two-col-grid">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "20px", marginBottom: "32px" }} className="two-col-grid services-grid">
             <ServiceCard
               icon={Compass}
               title="Product Strategy & Initiative Bets"
@@ -519,6 +520,9 @@ export default function HomeClient() {
 
         <style>{`
           .service-card:hover .service-accent-bar { transform: scaleX(1) !important; }
+          @media (min-width: 641px) {
+            .services-grid { grid-template-rows: 1fr 1fr; }
+          }
         `}</style>
       </section>
 
