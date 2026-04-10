@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Reveal from "@/components/reveal";
 import SectionLabel from "@/components/section-label";
 import ProductTableToggle from "@/components/product-table-toggle";
@@ -413,6 +414,66 @@ export default function TmcBenefitsPage() {
                 }}
               >
                 <ProductTableToggle />
+              </div>
+            </Reveal>
+
+            <Reveal delay={90}>
+              <div
+                style={{
+                  border: "1px dashed var(--accent)",
+                  borderRadius: "var(--radius-lg)",
+                  padding: "24px 28px",
+                  background: "rgba(74,124,89,0.04)",
+                  display: "flex",
+                  gap: "16px",
+                  alignItems: "flex-start",
+                  flexWrap: "wrap",
+                  marginTop: "20px",
+                }}
+              >
+                <div style={{ flex: 1, minWidth: "240px" }}>
+                  <div
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: "11px",
+                      letterSpacing: "0.15em",
+                      textTransform: "uppercase",
+                      color: "var(--accent)",
+                      marginBottom: "8px",
+                    }}
+                  >
+                    Deep Dive Available · Product 01
+                  </div>
+                  <p
+                    style={{
+                      fontFamily: "var(--font-body)",
+                      fontSize: "15px",
+                      color: "var(--foreground)",
+                      margin: "0 0 4px",
+                      fontWeight: 500,
+                    }}
+                  >
+                    See the Portfolio Intelligence Platform worked out end-to-end.
+                  </p>
+                  <p
+                    style={{
+                      fontFamily: "var(--font-body)",
+                      fontSize: "14px",
+                      color: "var(--foreground)",
+                      margin: 0,
+                      lineHeight: 1.6,
+                    }}
+                  >
+                    Discovery · Figma prototype · Product spec · System architecture
+                  </p>
+                </div>
+                <Link
+                  href="/tmc-example"
+                  className="button-primary"
+                  style={{ alignSelf: "center", whiteSpace: "nowrap" }}
+                >
+                  View prototype
+                </Link>
               </div>
             </Reveal>
           </div>
