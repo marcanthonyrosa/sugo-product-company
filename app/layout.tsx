@@ -24,6 +24,12 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sugo Product Company — Fractional Product Leadership",
+    description:
+      "Fractional product leadership for busy founders. Senior product thinking, without the full-time overhead.",
+  },
 };
 
 export default function RootLayout({
