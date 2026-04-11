@@ -538,32 +538,67 @@ export default function HomeClient() {
             </h2>
           </FadeUp>
 
-          {/* 3-step flow */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "0", marginBottom: "80px", position: "relative" }} className="three-col-steps">
-            {/* Connecting line (desktop) */}
-            <div aria-hidden="true" className="steps-connector" style={{ position: "absolute", top: "28px", left: "calc(16.67% + 16px)", right: "calc(16.67% + 16px)", height: "1px", borderTop: "1px dashed rgba(74,124,89,0.4)", zIndex: 0 }} />
-
+          {/* 3-step flow — dashed segments sit in the same flex row as each number (align-items: center) so the track reads as one sequential path */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "0", marginBottom: "80px", columnGap: "0" }} className="three-col-steps">
             {[
               { n: "01", title: "Discovery", desc: "We get deep on your product, team structure, current roadmap, and bets on the table. No templates — we listen first." },
               { n: "02", title: "Engagement", desc: "We scope the fractional arrangement: scope, cadence, and what success looks like at 30/60/90 days." },
               { n: "03", title: "Execution", desc: "We embed and deliver. Weekly output — specs, roadmaps, decision docs. Everything written down, nothing in someone's head." },
             ].map((step, i) => (
               <FadeUp key={step.n} delay={i * 0.15}>
-                <div style={{ padding: "0 24px 0 0", position: "relative", zIndex: 1 }} className="step-col">
-                  <motion.div
-                    whileHover={{ color: "var(--accent)" }}
+                <div style={{ padding: "0 12px", position: "relative" }} className="step-col">
+                  <div
+                    className="step-num-row"
                     style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "clamp(28px, 3vw, 36px)",
-                      color: "rgba(74,124,89,0.3)",
+                      display: "flex",
+                      alignItems: "center",
                       marginBottom: "20px",
-                      letterSpacing: "-0.02em",
-                      display: "inline-block",
-                      transition: "color 200ms ease",
+                      minHeight: "clamp(40px, 4.5vw, 52px)",
                     }}
                   >
-                    {step.n}
-                  </motion.div>
+                    {i > 0 && (
+                      <div
+                        aria-hidden
+                        className="step-connector-segment"
+                        style={{
+                          flex: 1,
+                          height: 0,
+                          borderTop: "1px dashed rgba(74,124,89,0.4)",
+                          marginRight: 8,
+                          marginLeft: -12,
+                          minWidth: 8,
+                        }}
+                      />
+                    )}
+                    <motion.div
+                      whileHover={{ color: "var(--accent)" }}
+                      style={{
+                        fontFamily: "var(--font-mono)",
+                        fontSize: "clamp(28px, 3vw, 36px)",
+                        color: "rgba(74,124,89,0.3)",
+                        letterSpacing: "-0.02em",
+                        flexShrink: 0,
+                        lineHeight: 1,
+                        transition: "color 200ms ease",
+                      }}
+                    >
+                      {step.n}
+                    </motion.div>
+                    {i < 2 && (
+                      <div
+                        aria-hidden
+                        className="step-connector-segment"
+                        style={{
+                          flex: 1,
+                          height: 0,
+                          borderTop: "1px dashed rgba(74,124,89,0.4)",
+                          marginLeft: 8,
+                          marginRight: -12,
+                          minWidth: 8,
+                        }}
+                      />
+                    )}
+                  </div>
                   <h3 style={{ fontFamily: "var(--font-display)", fontSize: "20px", fontWeight: "normal", color: "var(--foreground)", margin: "0 0 12px" }}>
                     {step.title}
                   </h3>
@@ -615,8 +650,8 @@ export default function HomeClient() {
         <style>{`
           @media (max-width: 768px) {
             .three-col-steps { grid-template-columns: 1fr !important; gap: 40px !important; }
-            .steps-connector { display: none !important; }
-            .step-col { padding-right: 0 !important; }
+            .step-connector-segment { display: none !important; }
+            .step-col { padding-left: 0 !important; padding-right: 0 !important; }
             .why-sugo-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
           }
         `}</style>
