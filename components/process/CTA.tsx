@@ -37,7 +37,7 @@ export default function ProcessCTA() {
               lineHeight: 1.6,
             }}
           >
-            Let&apos;s take your idea through the process.
+            Walk your idea through the same eight steps.
           </p>
         </Reveal>
         <Reveal delay={160}>
