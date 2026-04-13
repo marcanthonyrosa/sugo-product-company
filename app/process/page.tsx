@@ -7,7 +7,7 @@ import Reveal from "@/components/reveal";
 export const metadata: Metadata = {
   title: "How We Work — Sugo Product Company",
   description:
-    "Structured, thoughtful product leadership that leaves the founder in control. Learn how Sugo's process works.",
+    "How Sugo works: clear bets, documented decisions, founder-owned artifacts.",
 };
 
 export default function ProcessPage() {
@@ -24,8 +24,8 @@ export default function ProcessPage() {
           </Reveal>
           <Reveal delay={160}>
             <p style={{ fontFamily: "var(--font-display)", fontSize: "18px", color: "var(--color-slate)", margin: 0, lineHeight: 1.75, maxWidth: "640px" }}>
-              Great product decisions don&apos;t come from moving fast. They come from asking the right
-              questions, making the right bets, and documenting the work so it outlives the engagement.
+              Speed without clarity wastes effort. We prioritize the right questions, explicit bets, and
+              written decisions that outlast the engagement.
             </p>
           </Reveal>
         </div>
@@ -35,19 +35,14 @@ export default function ProcessPage() {
       <section style={{ padding: "var(--section-pad-y) 24px", background: "var(--background)" }}>
         <div style={{ maxWidth: "720px", margin: "0 auto" }}>
           <Reveal delay={0}>
-            <p style={{ fontFamily: "var(--font-display)", fontSize: "17px", color: "var(--foreground)", lineHeight: 1.85, margin: "0 0 32px" }}>
-              Sugo is named for the slow-cooked Sunday sauce — the kind made with time, intention, and
-              craft. Not because it takes forever, but because the approach matters. Every recipe has a
-              reason. The same applies here: every spec, every decision doc, every roadmap artifact is
-              written because it earns its place. No output for output&apos;s sake.
-            </p>
-          </Reveal>
-          <Reveal delay={80}>
             <p style={{ fontFamily: "var(--font-display)", fontSize: "17px", color: "var(--foreground)", lineHeight: 1.85, margin: 0 }}>
-              Everything we produce is written so the founder stays in control. When the engagement ends,
-              you don&apos;t need Sugo to interpret your own product. The artifacts are yours. The
-              decisions are documented. Your next PM can open the folder on Day 1 and know exactly where
-              things stand.
+              Deliverables are deliberate—specs, roadmaps, decision logs—not volume for its own sake. The
+              founder keeps the keys: when we wrap, artifacts and decisions live in your systems; your next
+              PM picks up from the folder. For the Sunday-sauce story, see{" "}
+              <Link href="/#about" style={{ color: "var(--color-sage)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
+                Why Sugo
+              </Link>{" "}
+              on the homepage.
             </p>
           </Reveal>
         </div>
@@ -82,7 +77,7 @@ export default function ProcessPage() {
               <div>
                 <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--color-sage)", marginBottom: "24px" }}>We are</div>
                 <ul className="sage-list">
-                  {["Embedded, not advisory — we do the work", "Async-first but available for syncs", "Opinionated — we'll tell you what we think", "Outcome-oriented — deliverables, not hours"].map(item => (
+                  {["Embedded—we ship the work, not slide advice", "Async-first; sync when it matters", "Direct on tradeoffs", "Deliverables over hours"].map(item => (
                     <li key={item} style={{ color: "var(--foreground)", fontFamily: "var(--font-display)", fontSize: "17px", lineHeight: 1.65, marginBottom: "12px" }}>{item}</li>
                   ))}
                 </ul>
@@ -92,7 +87,7 @@ export default function ProcessPage() {
               <div>
                 <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "24px" }}>We&apos;re not</div>
                 <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                  {["A full-time PM replacement (at full-time overhead)", "A vendor who needs managing", "A strategy firm that hands you a deck and leaves", "Right for every stage (we're honest about fit)"].map(item => (
+                  {["A full-time PM at full-time cost", "Another vendor to babysit", "Deck-only strategy shops", "A fit for every stage—we’ll say so if not"].map(item => (
                     <li key={item} style={{ display: "flex", gap: "10px", alignItems: "flex-start", color: "var(--foreground)", fontFamily: "var(--font-display)", fontSize: "17px", lineHeight: 1.65, marginBottom: "12px", opacity: 0.65 }}>
                       <span style={{ fontFamily: "var(--font-mono)", fontSize: "14px", color: "var(--color-slate)", flexShrink: 0, marginTop: "1px" }}>✕</span>
                       {item}
@@ -115,9 +110,9 @@ export default function ProcessPage() {
                 <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--color-sage)" }}>ONGOING · MONTH-TO-MONTH</div>
                 <h3 style={{ fontFamily: "var(--font-display)", fontSize: "24px", fontWeight: "normal", color: "var(--foreground)", margin: 0, lineHeight: 1.2 }}>Fractional Retainer</h3>
                 <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-                  <EngagementDetail label="Ideal for" value="Founders who need consistent product support through a growth phase." />
-                  <EngagementDetail label="Commitment" value="Minimum 3 months, renewable." />
-                  <EngagementDetail label="Scope" value="Defined at engagement start, adjusted quarterly." />
+                  <EngagementDetail label="Ideal for" value="Steady product support through a growth stretch." />
+                  <EngagementDetail label="Commitment" value="3+ months, renewable." />
+                  <EngagementDetail label="Scope" value="Set at kickoff; tuned each quarter." />
                 </div>
                 <Link href="/#contact" className="link-sage-arrow">→ START WITH A CALL</Link>
               </div>
@@ -127,9 +122,9 @@ export default function ProcessPage() {
                 <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--color-sage)" }}>ONE-TIME · FIXED SCOPE</div>
                 <h3 style={{ fontFamily: "var(--font-display)", fontSize: "24px", fontWeight: "normal", color: "var(--foreground)", margin: 0, lineHeight: 1.2 }}>Focused Engagement</h3>
                 <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-                  <EngagementDetail label="Ideal for" value="A specific decision, audit, or org design challenge." />
-                  <EngagementDetail label="Commitment" value="Typically 2–6 weeks." />
-                  <EngagementDetail label="Scope" value="Defined up front, delivered on deadline." />
+                  <EngagementDetail label="Ideal for" value="One decision, audit, or org design sprint." />
+                  <EngagementDetail label="Commitment" value="Usually 2–6 weeks." />
+                  <EngagementDetail label="Scope" value="Fixed up front; shipped on date." />
                 </div>
                 <Link href="/#contact" className="link-sage-arrow">→ DESCRIBE YOUR SITUATION</Link>
               </div>
@@ -141,7 +136,7 @@ export default function ProcessPage() {
       {/* ── CTA ──────────────────────────────────────────────────────────── */}
       <CTASection
         headline="Ready to start?"
-        subhead="Engagements start with a 30-minute call. No decks, no sales process."
+        subhead="30 minutes to get oriented. No deck, no sales process."
         buttonText="→ GET IN TOUCH"
         buttonHref="https://calendar.app.google/UkTiJRp4MpWsVLMXA"
       />
@@ -183,32 +178,36 @@ const phases = [
     label: "PHASE 01 · DISCOVERY & AUDIT",
     title: "Discovery & Audit",
     duration: "WEEKS 1–2",
-    description: "We get into the business before we say anything about product. We review what exists: the roadmap (if there is one), customer feedback, team structure, and what bets are on the table. No templates, no checklist — we listen first.",
-    outputs: ["Current-state product audit", "Stakeholder context doc", "Initial risk and opportunity flags"],
+    description:
+      "Understand the business before prescribing product: roadmap (if any), customers, team, and live bets—listen first, no template theater.",
+    outputs: ["Current-state product audit", "Stakeholder context", "Risk / opportunity flags"],
   },
   {
     id: "02",
     label: "PHASE 02 · ALIGNMENT",
     title: "Alignment",
     duration: "WEEK 3",
-    description: "We define the engagement: what we're solving, how we'll work together, what success looks like at 30/60/90 days. This becomes the engagement brief — a living document both parties reference.",
-    outputs: ["Engagement brief (signed)", "Communication cadence established", "First sprint's scope confirmed"],
+    description:
+      "Lock what we’re solving, how we work, and 30/60/90 success into a brief both sides reference.",
+    outputs: ["Signed engagement brief", "Cadence agreed", "First sprint scope"],
   },
   {
     id: "03",
     label: "PHASE 03 · EXECUTION",
     title: "Execution",
     duration: "ONGOING",
-    description: "This is where work happens. Weekly output: specs, decision docs, roadmap updates, design feedback, stakeholder comms. Everything is written down. Nothing lives only in someone's head.",
-    outputs: ["Product specs and user stories", "Roadmap artifacts (quarterly and annual)", "Design collaboration notes", "Decision logs"],
+    description:
+      "Weekly shipping: specs, decisions, roadmap updates, design notes, comms—on paper, not in heads.",
+    outputs: ["Specs & stories", "Quarterly / annual roadmap artifacts", "Design notes & decision logs"],
   },
   {
     id: "04",
     label: "PHASE 04 · HANDOFF",
     title: "Handoff",
     duration: "FINAL 2 WEEKS",
-    description: "Engagements end with a clean handoff package — not a pile of Notion pages. We document what was decided, what was deferred, and what your next PM needs to know on Day 1.",
-    outputs: ["Handoff brief", "Artifact index (links to all deliverables)", "Outstanding decision log"],
+    description:
+      "Close with a tidy package: what shipped, what’s deferred, what your next PM needs day one—not a dump of pages.",
+    outputs: ["Handoff brief", "Artifact index", "Open decisions"],
   },
 ];
 

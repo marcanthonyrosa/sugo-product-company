@@ -11,7 +11,7 @@ import SectionLabel from "@/components/section-label";
 export const metadata: Metadata = {
   title: "How We Build — Sugo Product Company",
   description:
-    "A repeatable, AI-native process for taking ideas from concept to shipped product. 8 phases, modern tools, clear outcomes.",
+    "Eight AI-native steps from idea to shipped product—tools, deliverables, and outcomes.",
 };
 
 export default function HowWeBuildPage() {

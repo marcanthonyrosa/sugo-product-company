@@ -29,39 +29,19 @@ export default function Hero() {
             How we build
           </h1>
         </Reveal>
-        <Reveal delay={140}>
+        <Reveal delay={160}>
           <p
             style={{
               fontFamily: "var(--font-body)",
-              fontSize: "18px",
+              fontSize: "17px",
               color: "var(--foreground)",
-              opacity: 0.7,
-              margin: "0 0 20px",
-              lineHeight: 1.6,
-              maxWidth: "640px",
-              fontStyle: "italic",
-            }}
-          >
-            A clear, step-by-step process for turning your idea into a real
-            product — faster than you thought possible.
-          </p>
-        </Reveal>
-        <Reveal delay={200}>
-          <p
-            style={{
-              fontFamily: "var(--font-body)",
-              fontSize: "16px",
-              color: "var(--foreground)",
-              opacity: 0.65,
+              opacity: 0.72,
               margin: 0,
-              lineHeight: 1.7,
-              maxWidth: "600px",
+              lineHeight: 1.65,
+              maxWidth: "640px",
             }}
           >
-            Every project we take on follows 8 clear steps — from
-            understanding the problem to launching something real. We use AI
-            to handle the heavy lifting so we can focus on the decisions that
-            matter.
+            Eight steps from problem to shipped product. AI does the volume; we own the decisions.
           </p>
         </Reveal>
       </div>

@@ -35,7 +35,7 @@ export default function Philosophy() {
                 lineHeight: 1.7,
               }}
             >
-              AI handles the time-consuming parts — writing, coding, researching. We handle the thinking and decision-making.
+              AI handles drafting, code, and research—you keep the calls and tradeoffs.
             </p>
             <p
               style={{
@@ -46,8 +46,7 @@ export default function Philosophy() {
                 lineHeight: 1.7,
               }}
             >
-              Every step has a purpose, a method, and a clear deliverable. Nothing is made up as we go.
-              Our process is based on proven approaches used by the best product teams in the world.
+              Each step ships a deliverable; we don’t improvise the playbook mid-flight.
             </p>
             <p
               style={{

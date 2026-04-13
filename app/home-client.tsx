@@ -64,10 +64,10 @@ function FloatingShape({ size, color, top, left, right, bottom, delay = 0 }: {
 
 /* ── Problem: compact list + headline split (no card chrome) ─────────── */
 const problemListItems: { icon: React.ElementType; iconColor: string; text: string }[] = [
-  { icon: LayoutGrid, iconColor: "rgba(17,34,64,0.9)", text: "You own product, growth, go-to-market, and everything else" },
-  { icon: Target, iconColor: "rgba(74,124,89,0.95)", text: "Product strategy gets deprioritized when things get busy" },
-  { icon: Clock, iconColor: "rgba(143,163,177,0.95)", text: "Tactical work keeps slipping to next week — indefinitely" },
-  { icon: Zap, iconColor: "rgba(74,124,89,0.85)", text: "Hiring a full-time CPO too early doesn't make sense yet" },
+  { icon: LayoutGrid, iconColor: "rgba(17,34,64,0.9)", text: "Product, growth, GTM—and everything else lands on you" },
+  { icon: Target, iconColor: "rgba(74,124,89,0.95)", text: "Strategy loses to firefighting when calendars fill up" },
+  { icon: Clock, iconColor: "rgba(143,163,177,0.95)", text: "Tactical product work keeps sliding to \"next week\"" },
+  { icon: Zap, iconColor: "rgba(74,124,89,0.85)", text: "A full-time CPO is the wrong hire (and cost) for this stage" },
 ];
 
 function ProblemBulletList() {
@@ -363,7 +363,7 @@ export default function HomeClient() {
                 color: "var(--foreground)",
               } as React.CSSProperties}
             >
-              Make better product decisions and execute with confidence — without hiring a full-time product leader too early.
+              Clear product decisions and follow-through—without committing to a full-time product leader before it makes sense.
             </p>
 
             {/* CTA row */}
@@ -422,7 +422,7 @@ export default function HomeClient() {
           <div className="problem-split">
             <FadeUp delay={0.15}>
               <p style={{ fontFamily: "var(--font-body)", fontSize: "17px", color: "var(--foreground)", margin: 0, lineHeight: 1.75, maxWidth: "min(600px, 100%)", fontWeight: 300 }}>
-                You&apos;re building the product, managing the team, chasing revenue, and handling everything in between. Strategic product work shouldn&apos;t be the thing that slips.
+                You&apos;re shipping, selling, and steering the team—strategic product work is usually what gives first.
               </p>
             </FadeUp>
             <ProblemBulletList />
@@ -441,12 +441,12 @@ export default function HomeClient() {
           </FadeUp>
           <FadeUp delay={0.1}>
             <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(28px, 4vw, 44px)", fontWeight: "normal", color: "var(--foreground)", margin: "0 0 16px", lineHeight: 1.2, letterSpacing: "-0.01em" }}>
-              Fractional product support to help founders load-balance.
+              Fractional product when you&apos;re stretched.
             </h2>
           </FadeUp>
           <FadeUp delay={0.15}>
             <p style={{ fontFamily: "var(--font-body)", fontSize: "17px", color: "var(--foreground)", margin: "0 0 56px", lineHeight: 1.7, maxWidth: "540px", fontWeight: 300 }}>
-              Embedded support that moves with your business — strategy to execution, roadmap to spec.
+              From bets and roadmap to specs—embedded as you grow.
             </p>
           </FadeUp>
 
@@ -455,25 +455,25 @@ export default function HomeClient() {
             <ServiceCard
               icon={Compass}
               title="Product Strategy & Initiative Bets"
-              description="Identify the right bets for your stage. We help you decide what to build next and why — so effort goes where it creates the most leverage."
+              description="Pick what to build next for your stage—so effort goes where it compounds."
               delay={0.1}
             />
             <ServiceCard
               icon={Map}
               title="Quarterly & Annual Roadmapping"
-              description="Structured roadmap artifacts your team can rally around. Quarterly priorities, annual themes, and a clear line from strategy to sprint."
+              description="Roadmaps people actually use: themes, priorities, and a straight line to the sprint."
               delay={0.2}
             />
             <ServiceCard
               icon={PenLine}
               title="Specs, Design & Execution"
-              description="Product specs, user stories, design collaboration, and feedback loops — the detailed work that keeps engineering and design aligned."
+              description="Specs, stories, and design feedback—so eng and design stay aligned."
               delay={0.3}
             />
             <ServiceCard
               icon={CheckSquare}
               title="Tactical Work That Keeps Slipping"
-              description="The backlog of product work that never makes the cut. We tackle the high-value items that keep getting bumped to next week."
+              description="High-leverage backlog items that never get calendar time—we clear them."
               delay={0.4}
             />
           </div>
@@ -541,9 +541,9 @@ export default function HomeClient() {
           {/* 3-step flow — dashed segments sit in the same flex row as each number (align-items: center) so the track reads as one sequential path */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "0", marginBottom: "80px", columnGap: "0" }} className="three-col-steps">
             {[
-              { n: "01", title: "Discovery", desc: "We get deep on your product, team structure, current roadmap, and bets on the table. No templates — we listen first." },
-              { n: "02", title: "Engagement", desc: "We scope the fractional arrangement: scope, cadence, and what success looks like at 30/60/90 days." },
-              { n: "03", title: "Execution", desc: "We embed and deliver. Weekly output — specs, roadmaps, decision docs. Everything written down, nothing in someone's head." },
+              { n: "01", title: "Discovery", desc: "Map product, team, roadmap, and open bets—listen first, no cookie-cutter intake." },
+              { n: "02", title: "Engagement", desc: "Align on scope, cadence, and 30/60/90 success—then lock the brief." },
+              { n: "03", title: "Execution", desc: "Embed weekly: specs, roadmaps, decision notes—documented, not tribal knowledge." },
             ].map((step, i) => (
               <FadeUp key={step.n} delay={i * 0.15}>
                 <div style={{ padding: "0 12px", position: "relative" }} className="step-col">
@@ -636,11 +636,8 @@ export default function HomeClient() {
                 </h2>
               </div>
               <div>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: "16px", color: "var(--foreground)", margin: "0 0 20px", lineHeight: 1.8, fontWeight: 300 }}>
-                  Sugo is Italian for sauce — the kind that simmers slowly on a Sunday, never rushed. Great products are built the same way: with intention, craft, and the right ingredients at the right time. That&apos;s the Sugo approach.
-                </p>
                 <p style={{ fontFamily: "var(--font-body)", fontSize: "16px", color: "var(--foreground)", margin: 0, lineHeight: 1.8, fontWeight: 300 }}>
-                  Everything produced is written so the founder stays in control. When the engagement ends, you don&apos;t need Sugo to interpret your own product. The artifacts are yours. The decisions are documented. Your next PM can hit the ground running on Day 1.
+                  <em>Sugo</em> is Sunday sauce—slow, intentional, the right ingredients at the right time. Work ships as artifacts you own: when we&apos;re done, you&apos;re not dependent on us to interpret your product; your next PM opens the folder and continues.
                 </p>
               </div>
             </div>
@@ -699,7 +696,7 @@ export default function HomeClient() {
               </FadeUp>
               <FadeUp delay={0.2}>
                 <p style={{ fontFamily: "var(--font-body)", fontSize: "17px", color: "rgba(245,239,214,0.65)", margin: "0 0 48px", lineHeight: 1.7, fontWeight: 300 }}>
-                  Let&apos;s talk about where you are, what&apos;s slipping, and whether Sugo is the right fit. No decks, no sales process — just a 30-minute conversation.
+                  30 minutes to see if we&apos;re a fit. No deck, no sales process.
                 </p>
               </FadeUp>
               <FadeUp delay={0.3}>

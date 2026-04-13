@@ -10,7 +10,7 @@ interface CTASectionProps {
 
 export default function CTASection({
   headline = "Ready to offload product?",
-  subhead = "Engagements start with a 30-minute call. No decks, no sales process.",
+  subhead = "30 minutes to get oriented. No deck, no sales process.",
   buttonText = "→ GET IN TOUCH",
   buttonHref = "https://calendar.app.google/UkTiJRp4MpWsVLMXA",
   showEmail = true,

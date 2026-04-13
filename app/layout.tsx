@@ -11,15 +11,16 @@ const inter = Inter({
   display: "swap",
 });
 
+const SITE_DESC =
+  "Fractional product leadership for busy founders—clear decisions and execution without a full-time hire yet.";
+
 export const metadata: Metadata = {
   title: "Sugo Product Company — Fractional Product Leadership",
-  description:
-    "Senior product thinking for early-stage founders, without the full-time overhead.",
+  description: SITE_DESC,
   metadataBase: new URL("https://sugoproduct.co"),
   openGraph: {
     title: "Sugo Product Company — Fractional Product Leadership",
-    description:
-      "Fractional product leadership for busy founders. Make better product decisions and execute with confidence — without hiring full-time.",
+    description: SITE_DESC,
     siteName: "Sugo Product Company",
     locale: "en_US",
     type: "website",
@@ -27,8 +28,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Sugo Product Company — Fractional Product Leadership",
-    description:
-      "Fractional product leadership for busy founders. Senior product thinking, without the full-time overhead.",
+    description: SITE_DESC,
   },
 };
 
